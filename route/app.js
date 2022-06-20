@@ -1,0 +1,38 @@
+let http = require('http');
+let url = require('url');
+let querystring = require('querystring');
+
+let hostname = '127.0.0.1';
+let port = 5000;
+
+
+    res.setHeader('Content-Type', 'text/html');
+
+    if (page == '/') {
+        res.statusCode = 200;
+        res.write("You are at homepage");
+    }
+    else if (page == '/controller') {
+        res.statusCode = 200;
+        res.write("You are at the controller");
+    }
+    else if (page == '/controller/method') {
+        res.statusCode = 200;
+        res.write("You are at the method of the controller");
+    }
+    else {
+        res.statusCode = 404;
+        res.write("Page does not exist");
+    }
+
+    if ('prenom' in params && 'nom' in params) {
+        res.write('<br>You are ' + params['prenom'] + ' ' + params['nom']);
+    } else {
+        res.write('<br>Fisrtname and lastname are empty !');
+    }
+    res.end();
+});
+
+server.listen(port, hostname, function() {
+  console.log("Server running at http://" + hostname + ":" + port + "/");
+});
