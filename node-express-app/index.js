@@ -68,7 +68,7 @@ connection.connect(function (err) {
 app.use(express.json());
 // methode POST
 app.post('/restaurant', (req, res) => {
-    let sql = "INSERT INTO restaurants (Name,City,nbCouverts,terrasse,parking)" +
+    let sql = "INSERT INTO restaurants (name,city,nbCouverts,terrasse,parking)" +
        " VALUES ('" + req.body.name + "', '" 
                     + req.body.city + "', '"
                     + req.body.nbCouverts + "', '"
@@ -94,7 +94,7 @@ app.get('/restaurants', (req, res) => {
         res.send(rows)
     });
     res.status(200);
-    res.write("liste des restaurants");
+    
 });
 
 // methode GET:id
@@ -111,27 +111,41 @@ app.get('/restaurants/:id', (req, res) => {
     res.send(row);
 });
     res.status(200);
-    res.write('Restaurant :'.id);
 });
 // route put
 app.put('/restaurants/:id', (req, res) => {
     let id = parseInt(req.params.id);
-    
     // Coder ici la requête
-      // Formater la requête
-    // Executer la requête
-
+    let sql_update = "UPDATE ?? SET  name = " + req.body.name +
+        ",city=" + req.body.city +
+        ", nbCouverts = " + req.body.parking +
+        ",parking=" + req.body.parking +
+        ",terrasse = " + req.body.parking +
+        " WHERE ?? = " + id;
+    // Formater la requête
+    let replaces = ['restaurants', 'id'];
+    sql = mysql.format(sql_update, replaces);    
+     // Executer la requête
+    connection.query(sql, function(err, row, fields) {
+        if (err) throw err;
+    res.send(row);
+});
     res.status(200);
 })
 //route delete
 app.delete('/restaurants/:id', (req, res) => {
-    let id = parseInt(req.params.id)
-    
+    let id = parseInt(req.params.id);
     // Coder ici la requête
+    let sql_delete = "DELETE * from ?? WHERE ?? = " + id;
     // Formater la requete
+    let replaces = ['restaurants', 'id'];
+    sql = mysql.format(sql_delte, replaces);    
     // Executer la requête
-
+    connection.query(sql, function(err, row, fields) {
+        if (err) throw err;
+    res.send(row);
+});
     res.status(200);
-    res.write("restaurant supprimé")
+   
 })
 
