@@ -31,7 +31,7 @@ let port = 5000;
         res.write('<br>Fisrtname and lastname are empty !');
     }
     res.end();
-});
+
 
 server.listen(port, hostname, function() {
   console.log("Server running at http://" + hostname + ":" + port + "/");
