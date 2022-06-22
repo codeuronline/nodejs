@@ -2,7 +2,7 @@ const express = require('express');
 let mysql = require('mysql');
 console.log('Get connection ...');
 const app = express();
-app.listen(5050, () => {
+app.listen(5000, () => {
     console.log('Server is listening @5000');
 });
 
