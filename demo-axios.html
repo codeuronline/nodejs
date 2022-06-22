@@ -12,22 +12,41 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="restaurant in restaurants">{{ restaurant }}</li>
+            <li v-for="restaurant in posts">
+                <table>
+                    <tr>
+                        <td>
+                            <h1>({{restaurant.name}})</h1>
+                        </td>
+                        <td>
+                            <h2>{{ restaurant.city }}--{{restaurant.nbCouverts}} couverts - Parking : {{restaurant.parking}} - Terrasse : {{restaurant.terrasse}}</h2>
+                        </td>
+                        <td>
+                            <button v-on:click="delete()">Mettre à jour</button>                            
+                        </td>
+                    </tr>
+                    <tr>    <h1>EQUIPE</h1></tr>
+                </table>  
+            
+                
+            </li>
         </ul>
-        <button @:click="update()">Mettre à jour</button>        
+        <button v-on:click="update()">Mettre à jour</button>        
     </div>
     <script>
         let  app = new Vue({
             el: "#app",
             data: {
-                restaurants: ["Resto1", "Resto 2","Resto 3"]
+                posts: [{"name":"Resto1", "id":"1"}, {"name": "Resto 2","id":"2"},{"name":"Resto 3","id":"3"}]
             },
             methods:{
                 update() {
                     axios.get("http://127.0.0.1:5000/restaurants")
-                    .then(res=>console.log(res))            
+                    .then(res=>this.posts=res.data)
+                    .catch(error =>this.posts =[{"name":"Erreur de chargement"}])            
                 }
             }
+            
         });
     </script>
    
