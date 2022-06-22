@@ -28,7 +28,7 @@
                     <tr>       
                     <td><h1>EQUIPE</h1></td>
                     <td>
-                        <!-- <li v-for="employe in postsemployes" >{{employe.first_name}} {{employe.last_name}}</li> -->
+                        <li v-for="employe in postsemployes" >{{employe.first_name}} {{employe.last_name}}</li> 
                     </td>
                     </tr>
                 </table>  
@@ -41,7 +41,7 @@
             el: "#app",
             data: {
                 posts: [{"name":"Resto1", "id":"1"}, {"name": "Resto 2","id":"2"},{"name":"Resto 3","id":"3"}],
-            //    postsemployes:[{"first_name":"tintin"}, {"last_name":"milou"}]
+            postsemployes:[{"first_name":"tintin"}, {"last_name":"milou"}],
             },
 
             methods:{
@@ -49,9 +49,9 @@
                     axios.get("http://127.0.0.1:5000/restaurants")
                     .then(res=>this.posts=res.data)
                     .catch(error =>this.posts =[{"name":"Erreur de chargement"}])   
-                    // axios.get("http://127.0.0.1:5000/restaurant/1/employes")
-                    // .then(res=>this.postsemployes=res.data)
-                    // .catch(error =>this.postsemployes =[{"first_name":"Erreur de chargement"}])                     
+                     axios.get("http://127.0.0.1:5000/restaurant/1/employes")
+                     .then(res=>this.postsemployes=res.data)
+                     .catch(error =>this.postsemployes =[{"first_name":"Erreur de chargement"}])                     
                 }
             }
             

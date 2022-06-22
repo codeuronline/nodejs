@@ -179,9 +179,9 @@ app.get('/restaurant/:idResto/employes', (req, res) => {
 app.get('/restaurant/:id', (req, res) => {
     let id = parseInt(req.params.id);
     // requete
-    let sql_template = "Select * from ?? WHERE ?? = " + id;
+    let sql_template = "SELECT * FROM ?? WHERE ?? = " + id;
     // formater la requete
-    let replaces = ['restaurants', 'id'];
+    let replaces = ['restaurants', 'id_restaurant'];
     sql = mysql.format(sql_template, replaces);
     // executer la requete
     connection.query(sql, function(err, row, fields) {
@@ -200,7 +200,7 @@ app.get('/restaurant/:idResto/employe/:idEmploye', (req, res) => {
     var sql_template = "SELECT * FROM ?? WHERE ??=" +
         idEmploye + " AND ?? =" + idResto;
     // formater requete
-    var replaces = ['employes', 'id', 'restaurant_id'];
+    var replaces = ['employes', 'id_employe', 'restaurant_id'];
     sql = mysql.format(sql_template, replaces);
     // executer la requete
     connection.query(sql, function (err, rows) {
