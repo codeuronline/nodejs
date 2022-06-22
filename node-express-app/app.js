@@ -1,6 +1,6 @@
 
  const express = require('express');
-//const app = require('app');
+//const route = require('app');
 let mysql = require('mysql');
 const cors = require('cors');
 const app = express();

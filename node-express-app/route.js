@@ -125,11 +125,13 @@ route.post('/restaurants/:idResto/employe',(req,res)=>{
 // Acces à Tous les Restaurants
 route.get('/restaurants', (req, res) => {
     // requete
-    var sql_template = "Select * from ?? ";
+    var sql_template = "SELECT * FROM ?? INNER JOIN ?? ON restaurants.id = employes.restaurant_id ";
     // formater la requete
-    var replaces = ['restaurants'];
+    console.log(sql_template);
+    var replaces = ['restaurants', 'employes'];
     sql = mysql.format(sql_template, replaces);
-    // executer la requet
+    
+    console.log(sql_template);// executer la requet
     connection.query(sql, function(err, rows) {
         if (err) throw err;
         res.send(rows)
