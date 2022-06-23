@@ -32,7 +32,7 @@
                             </div>                       
                             </td>
                         <td width="10%">
-                            <button v-on:click="addToCart($event,restaurant.restaurant_id)">X</button>
+                            <button v-on:click="delRestaurant($event,restaurant.id_restaurant)">X</button>
                         </td>
                     </tr>
                     <tr>       
@@ -43,7 +43,7 @@
                 </td>
                     <td width="90%">
                         <div width="100%" style="background-color: antiquewhite;" v-for="employe in team">
-                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<a><button v-on:click="delPersonnel(restaurant.restaurant_id,employe.employe_id)">X</button></a>
+                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<button v-on:click="delPersonnel($event,restaurant.restaurant_id,employe.employe_id)">X</button>
                         </p>
                     </div>
                     </td>      
@@ -74,18 +74,18 @@
                         console.log(this.team)
                     
                 },
-                addToCart: function (event,id_restaurant) {
+                addToCart: function (event,id) {
                 //use event here as well as id
                     console.log('In addToCart')
-                     console.log(this.$root.data.restaurant.id_restaurant)
+                     console.log('id_restaurant',id)
                 },
                 delRestaurant(event,id){
                     console.log(id)
-                    // axios.delete("http://127.0.0.1:5000/restaurant/"+id)
-                    // .then(res.status)
-                    // .catch(error => this.posts=[{"name":"erreur de suppression"}])
+                     axios.delete("http://127.0.0.1:5000/restaurant/"+id)
+                     .then(res.status)
+                     .catch(error => this.posts=[{"name":"erreur de suppression"}])
                 },
-                delPersonnel(idResto,idEmpl){
+                delPersonnel(event,idResto,idEmpl){
                     console.log(idResto,idEmpl)
                     // axios.delete("http://127.0.0.1:5000/restaurant/"+idResto+"employe/"+idEmpl)
                     // .then(res.status)
