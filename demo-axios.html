@@ -32,7 +32,7 @@
                             </div>                       
                             </td>
                         <td width="10%">
-                            <a href=""><button v-on:click="delRestaurant(restaurant.restaurant_id)">X</button></a>
+                            <button v-on:click="addToCart($event,restaurant.restaurant_id)">X</button>
                         </td>
                     </tr>
                     <tr>       
@@ -74,11 +74,16 @@
                         console.log(this.team)
                     
                 },
-                delRestaurant(id){
+                addToCart: function (event,id_restaurant) {
+                //use event here as well as id
+                    console.log('In addToCart')
+                     console.log(this.$root.data.restaurant.id_restaurant)
+                },
+                delRestaurant(event,id){
                     console.log(id)
                     // axios.delete("http://127.0.0.1:5000/restaurant/"+id)
                     // .then(res.status)
-                    // .catch(error => this.posts=[{"name":"reerur de suppression"}])
+                    // .catch(error => this.posts=[{"name":"erreur de suppression"}])
                 },
                 delPersonnel(idResto,idEmpl){
                     console.log(idResto,idEmpl)
