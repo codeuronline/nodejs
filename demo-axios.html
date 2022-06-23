@@ -12,24 +12,41 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="restaurant in posts">
+            <li v-for="restaurant in resto">
                 <table>
                     <tr>
-                        <td>
+                        <td width="300px">
+                            <div  style="background-color: aquamarine;">
                             <h1>({{restaurant.name}})</h1>
+                            </div>
                         </td>
-                        <td>
-                            <h2>{{ restaurant.city }}--{{restaurant.nbCouverts}} couverts - Parking : {{restaurant.parking}} - Terrasse : {{restaurant.terrasse}}</h2>
-                        </td>
-                        <td>
-                            <a href=""><button v-on:click="">X</button></a>                            
+                        <td width='90%'>
+                            <div height="100%" style="background-color:bisque">
+                            <h2 v-if="restaurant.nbCouverts !='false'">{{restaurant.city}}&nbsp;&nbsp;
+                                 {{restaurant.nbCouverts}} couverts 
+                                <img v-if="restaurant.parking ==='oui'" width="50px" height="50px" src="public/parking.jpg">
+                                <img v-if="restaurant.parking ==='non'" width="50px" height="50px" src="public/noparking.webp">
+                                <img v-if="restaurant.terrasse ==='oui'" width="75px" height="50px" src="public/terrasse.png">
+                                <img v-if="restaurant.terrasse ==='non'" width="50px" height="50px" src="public/noterrasse.jpg">
+                            </h2>
+                            </div>                       
+                            </td>
+                        <td width="10%">
+                            <a href=""><button v-on:click="delRestaurant(restaurant.restaurant_id)">X</button></a>
                         </td>
                     </tr>
                     <tr>       
-                    <td><h1>EQUIPE</h1></td>
-                    <td>
-                        <li v-for="employe in postsemployes" >{{employe.first_name}} {{employe.last_name}}</li> 
-                    </td>
+                    <td width="300px">    
+                        <div  style="background-color:azure">
+                        <h1>EQUIPE</h1>
+                    </div>
+                </td>
+                    <td width="90%">
+                        <div width="100%" style="background-color: antiquewhite;" v-for="employe in team">
+                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<a><button v-on:click="delPersonnel(restaurant.restaurant_id,employe.employe_id)">X</button></a>
+                        </p>
+                    </div>
+                    </td>      
                     </tr>
                 </table>  
             </li>
@@ -40,20 +57,37 @@
         let  app = new Vue({
             el: "#app",
             data: {
-                posts: [{"name":"Resto1", "id":"1"}, {"name": "Resto 2","id":"2"},{"name":"Resto 3","id":"3"}],
-            postsemployes:[{"first_name":"tintin"}, {"last_name":"milou"}],
+                resto: [{"name":"Resto1", "id_restaurant":"1","nbCouverts":"false"}, {"name": "Resto 2","id_restaurant":"2","nbCouverts":"false"},{"name":"Resto 3","id_restaurant":"3","nbCouverts":"false"}],
+                team: [{"first_name":"ici le prénom"}, {"last_name":"ici le nom"}],
             },
-
             methods:{
                 update() {
                     axios.get("http://127.0.0.1:5000/restaurants")
-                    .then(res=>this.posts=res.data)
-                    .catch(error =>this.posts =[{"name":"Erreur de chargement"}])   
-                     axios.get("http://127.0.0.1:5000/restaurant/1/employes")
-                     .then(res=>this.postsemployes=res.data)
-                     .catch(error =>this.postsemployes =[{"first_name":"Erreur de chargement"}])                     
-                }
-            }
+                    .then(res=>this.resto=res.data)
+                    .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
+                    console.log(this.resto)   
+                
+                    
+                    axios.get("http://127.0.0.1:5000/employes")
+                     .then(res=>this.team=res.data)
+                     .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])                         
+                        console.log(this.team)
+                    
+                },
+                delRestaurant(id){
+                    console.log(id)
+                    // axios.delete("http://127.0.0.1:5000/restaurant/"+id)
+                    // .then(res.status)
+                    // .catch(error => this.posts=[{"name":"reerur de suppression"}])
+                },
+                delPersonnel(idResto,idEmpl){
+                    console.log(idResto,idEmpl)
+                    // axios.delete("http://127.0.0.1:5000/restaurant/"+idResto+"employe/"+idEmpl)
+                    // .then(res.status)
+                    // .catch(error => this.posts=[{"name":"reerur de suppression"}])
+                },
+            },
+            
             
         });
     </script>

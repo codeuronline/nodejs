@@ -154,15 +154,26 @@ app.get('/restaurants', (req, res) => {
 
 });
 
+// Chemin d'acces : GET /employes
+// Acces à Tous les employé(s)
+app.get('/employes', (req, res) => { 
+    var sql_special = "SELECT * FROM employes ";
+    connection.query(sql_special, function(err, rows) {
+        if (err) throw err;
+        res.send(rows)
+    });
+    res.status(200);
+});
+
 // Chemin d'acces : GET /restaurant/: idResto /employes
 // Acces à Tous les employé(s) d'un restaurant idResto
+
 app.get('/restaurant/:idResto/employes', (req, res) => {
     var idResto = parseInt(req.params.idResto);
     // requete
-    var sql_template = "SELECT * FROM ?? WHERE ??= "
-        + idResto;
+    var sql_template = "SELECT *,name,city FROM employes JOIN restaurants ON id_restaurant = "+idResto+" WHERE  employes.restaurant_id="+idResto;
     // formater la requete
-    var replaces = ['employes','restaurant_id'];
+    var replaces = ['employes','restaurants'];
     sql = mysql.format(sql_template, replaces);
     // executer la requete
     connection.query(sql, function(err, rows) {
@@ -181,7 +192,7 @@ app.get('/restaurant/:id', (req, res) => {
     // requete
     let sql_template = "SELECT * FROM ?? WHERE ?? = " + id;
     // formater la requete
-    let replaces = ['restaurants', 'id_restaurant'];
+    let replaces = ['restaurants', 'restaurant'];
     sql = mysql.format(sql_template, replaces);
     // executer la requete
     connection.query(sql, function(err, row, fields) {

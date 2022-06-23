@@ -125,13 +125,12 @@ route.post('/restaurants/:idResto/employe',(req,res)=>{
 // Acces à Tous les Restaurants
 route.get('/restaurants', (req, res) => {
     // requete
-    var sql_template = "SELECT * FROM ?? INNER JOIN ?? ON restaurants.id = employes.restaurant_id ";
+    var sql_template = "SELECT *,* FROM ?? INNER JOIN ?? ON restaurants.id = employes.restaurant_id ";
     // formater la requete
-    console.log(sql_template);
-    var replaces = ['restaurants', 'employes'];
+    console.log(sql_template)
+    var replaces = ['restaurants','employes'];
     sql = mysql.format(sql_template, replaces);
-    
-    console.log(sql_template);// executer la requet
+    // executer la requet
     connection.query(sql, function(err, rows) {
         if (err) throw err;
         res.send(rows)
@@ -146,10 +145,10 @@ route.get('/restaurants', (req, res) => {
 route.get('/restaurant/:idResto/employes', (req, res) => {
     var idResto = parseInt(req.params.idResto);
     // requete
-    var sql_template = "SELECT * FROM ?? WHERE ??= "
+    var sql_template = "SELECT *,name,city,nbCouverts,terrasse,parking FROM ?? INNERJOIN ?? ON employes_restaurant_id=restaurant.id_restaurant "
         + idResto;
     // formater la requete
-    var replaces = ['employes','restaurant_id'];
+    var replaces = ['employes','restaurants','restaurant_id'];
     sql = mysql.format(sql_template, replaces);
     // executer la requete
     connection.query(sql, function(err, rows) {
