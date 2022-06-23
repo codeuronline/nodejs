@@ -282,9 +282,9 @@ app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
 app.delete('/restaurants/:id', (req, res) => {
     let id = parseInt(req.params.id);
     // Coder ici la requête
-    let sql_delete_restaurant = "DELETE *FROM ?? WHERE ?? = " + id;
+    let sql_delete_restaurant = "DELETE * FROM ?? WHERE ?? = " + id;
     // Formater la requete
-    let replaces = ['restaurants', 'id'];
+    let replaces = ['restaurants', 'id_restaurant'];
     sql1 = mysql.format(sql_delete_restaurant, replaces);    
     // Executer la requête
     connection.query(sql1, function (err, row, fields) {

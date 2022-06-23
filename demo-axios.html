@@ -81,8 +81,8 @@
                 },
                 delRestaurant(event,id){
                     console.log(id)
-                     axios.delete("http://127.0.0.1:5000/restaurant/"+id)
-                     .then(res.status)
+                     axios.delete("http://127.0.0.1:5000/restaurants/"+id)
+                     .then(status)
                      .catch(error => this.posts=[{"name":"erreur de suppression"}])
                 },
                 delPersonnel(event,idResto,idEmpl){
