@@ -81,16 +81,18 @@
                 },
                 delRestaurant(event,id){
                     console.log('delRestaurant (id) =>',id)
-                     // axios.delete("http://127.0.0.1:5000/restaurants/"+id)
-                     //.then(status)
-                    // .catch(error => this.posts=[{"name":"erreur de suppression"}])
+                     axios.delete("http://127.0.0.1:5000/restaurants/"+id)
+                     .then(status)
+                     .catch(error => this.posts=[{"name":"erreur de suppression"}])
+                    
                 },
+                
                 delPersonnel(event,id){
                     console.log('delPersonnel (id) =>',id)
-                    
-                    // axios.delete("http://127.0.0.1:5000/employes/"+id)
-                    // .then(res.status)
-                    // .catch(error => this.posts=[{"name":"reerur de suppression"}])
+                    axios.delete("http://127.0.0.1:5000/employes/"+id)
+                    .then(status)
+                    .catch(error => this.posts=[{"name":"erreur de suppression"}])
+             
                 },
             },
             

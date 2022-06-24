@@ -282,10 +282,11 @@ app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
 app.delete('/restaurants/:id', (req, res) => {
     let id = parseInt(req.params.id);
     // Coder ici la requête
-    let sql_delete_restaurant = "DELETE * FROM ?? WHERE ?? = " + id;
+    let sql_delete_restaurant = "DELETE FROM ?? WHERE ?? = " + id;
     // Formater la requete
     let replaces = ['restaurants', 'id_restaurant'];
     sql1 = mysql.format(sql_delete_restaurant, replaces);    
+    console.log(sql1);
     // Executer la requête
     connection.query(sql1, function (err, row, fields) {
         if (err) throw err;
@@ -293,11 +294,12 @@ app.delete('/restaurants/:id', (req, res) => {
     });
 
     //suppression des employe(s) lié à ce Restaurant
-    let sql_delete_employe= "DELETE * FROM ?? WHERE ?? = " + id
+    let sql_delete_employe= "DELETE FROM ?? WHERE ?? = " + id
     let replaces_employes = ['employes', 'restaurant_id'];
         
     sql2 = mysql.format(sql_delete_employe, replaces_employes);    
     // Executer la requête
+    console.log(sql2);
     connection.query(sql2, function(err, row, fields) {
         if (err) throw err;
         res.send(row);
@@ -312,10 +314,11 @@ app.delete('/restaurants/:id', (req, res) => {
 app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
     let idEmploye =parseInt(req.params.idEmploye);
     let idResto = parseInt(req.params.idResto);
-    let sql_delete = "DELETE * FROM ?? WHERE ?? =" + idResto 
+    let sql_delete = "DELETE FROM ?? WHERE ?? =" + idResto 
     " AND ?? = " + idEmploye;
     let replaces = ['employes', 'restaurant_id', 'id_employe'];
     sql = mysql.format(sql_delete, replaces);    
+    console.log(sql);
     // Executer la requête
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
@@ -328,9 +331,10 @@ app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
 // Suppression d'un employé idEmploye connu
 app.delete('/employes/:idEmploye', (req, res) => {
     let idEmploye = parse(req.params.idEmploye);
-    let sql_delete = "DELETE * FROM ?? WHERE  AND ?? = " + idEmploye;
+    let sql_delete = "DELETE FROM ?? WHERE   ?? = " + idEmploye;
     let replaces = ['employes', 'id_employe'];
-    sql = mysql.format(sql_delete, replaces);    
+    sql = mysql.format(sql_delete, replaces);   
+    console.log(sql);
     // Executer la requête
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
