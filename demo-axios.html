@@ -32,7 +32,7 @@
                             </div>                       
                             </td>
                         <td width="10%">
-                            <button v-on:click="delRestaurant($event,restaurant.id_restaurant);update()">X</button>
+                            <button v-on:click="delRestaurant($event,restaurant.id_restaurant)">X</button>
                         </td>
                     </tr>
                     <tr>       
@@ -43,7 +43,7 @@
                 </td>
                     <td width="90%">
                         <div width="100%" style="background-color: antiquewhite;" v-for="employe in team">
-                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<button v-on:click="delPersonnel($event,employe.id_employe);update()">X</button>
+                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<button v-on:click="delPersonnel($event,employe.id_employe)">X</button>
                         </p>
                     </div>
                     </td>      
@@ -66,25 +66,26 @@
                     .then(res=>this.resto=res.data)
                     .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
                     console.log(this.resto)   
-                
-                    
                     axios.get("http://127.0.0.1:5000/employes")
                      .then(res=>this.team=res.data)
                      .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])                         
                         console.log(this.team)
                     
                 },
-                addToCart: function (event,id) {
-                //use event here as well as id
-                    console.log('In addToCart')
-                     console.log('id_restaurant',id)
-                },
                 delRestaurant(event,id){
                     console.log('delRestaurant (id) =>',id)
                      axios.delete("http://127.0.0.1:5000/restaurants/"+id)
                      .then(status)
                      .catch(error => this.posts=[{"name":"erreur de suppression"}])
-                    
+                    console.log(status)    
+                    axios.get("http://127.0.0.1:5000/restaurants")
+                    .then(res=>this.resto=res.data)
+                    .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
+                    console.log(this.resto)   
+                    axios.get("http://127.0.0.1:5000/employes")
+                     .then(res=>this.team=res.data)
+                     .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])                         
+                        console.log(this.team)
                 },
                 
                 delPersonnel(event,id){
@@ -92,6 +93,14 @@
                     axios.delete("http://127.0.0.1:5000/employes/"+id)
                     .then(status)
                     .catch(error => this.posts=[{"name":"erreur de suppression"}])
+                    axios.get("http://127.0.0.1:5000/restaurants")
+                    .then(res=>this.resto=res.data)
+                    .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
+                    console.log(this.resto)   
+                    axios.get("http://127.0.0.1:5000/employes")
+                     .then(res=>this.team=res.data)
+                     .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])                         
+                        console.log(this.team)
              
                 },
             },
