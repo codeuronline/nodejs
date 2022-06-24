@@ -2,21 +2,21 @@
   <div id="app">
     <Accueil msg="LISTE DES RESTAURANTS"/>
     <Restaurant/>
-    <Employe/>
+ //   <Employe/>
   </div>
 </template>
 
 <script>
 import Accueil from './components/Accueil.vue'
 import Restaurant from './components/Restaurant.vue'
-import Employe from '.components/Employe.vue'
+//import Employe from '.components/Employe.vue'
 
 export default {
   name: 'App',
   components: {
     Accueil,
     Restaurant,
-    Employe,
+   // Employe,
   }
 }
 </script>
