@@ -1,13 +1,12 @@
 <template>
   <div class="Employe">
-    <h1>{{ msg }}</h1>
+    <h1>Employe</h1>
     formulaire d'ajout d'un restaurant
 
   </div>
 </template>
 
 <script>
-// Charger la bibliothèque axios
 import axios from "axios"
 
 export default {
@@ -19,10 +18,9 @@ export default {
   },
   created() {
     // Simple POST request with a JSON body using axios
-    
-  },
-  mounted() {
-    // SImple get les restaurants
+    const employe = { "first_name": "Rudofle", "Last_Name":"Grenoble","hire_date":"2022-06-01","restauant_id":"3" };
+    axios.post("http://127.0.1.1:5000/employe", employe)
+          .then(response => this.employe = response.data);
   }
 }
   </script>

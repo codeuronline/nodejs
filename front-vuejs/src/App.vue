@@ -1,33 +1,34 @@
 <template>
-  <div id="app">
-    <Accueil msg="LISTE DES RESTAURANTS"/>
-    <Restaurant/>
- //   <Employe/>
+  <div id="nav">
+    <router-link to="/">Accueil</router-link> |
+    <router-link to="/restaurant">Restaurant</router-link>
   </div>
+  <!-- <router-view/> -->
 </template>
-
-<script>
-import Accueil from './components/Accueil.vue'
-import Restaurant from './components/Restaurant.vue'
-//import Employe from '.components/Employe.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Accueil,
-    Restaurant,
-   // Employe,
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
+<script>
+import { createRouter, createWebHistory } from 'vue-router'
+import Accueil from './views/Accueil.vue'
+import Restaurant from './views/Restaurant.vue'
+    const routes = [
+       {
+        path: '/',
+        name: 'Accueil',
+        component: Accueil,
+      },
+      {
+        path: '/restaurant',
+        name: 'Restaurant',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: Restaurant
+      }
+    ]
+    const router = createRouter({
+      history: createWebHistory(process.env.BASE_URL),
+      routes
+    })
+    export default router
+</script>  
