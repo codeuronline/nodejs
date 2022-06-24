@@ -290,9 +290,10 @@ app.delete('/restaurants/:id', (req, res) => {
     // Executer la requête
     connection.query(sql1, function (err, row, fields) {
         if (err) throw err;
-        res.send(row);
+        console.log("restaurant supprimé")
+        //res.send(row);
     });
-
+    
     //suppression des employe(s) lié à ce Restaurant
     let sql_delete_employe= "DELETE FROM ?? WHERE ?? = " + id
     let replaces_employes = ['employes', 'restaurant_id'];
@@ -302,6 +303,7 @@ app.delete('/restaurants/:id', (req, res) => {
     console.log(sql2);
     connection.query(sql2, function(err, row, fields) {
         if (err) throw err;
+        console.log('tous employes du restaurant supprimés')
         res.send(row);
     });
     res.status(200);
@@ -327,19 +329,19 @@ app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
     res.status(200);
 
 })
-// Chemin d'acces : DELETE /employes/: idEmploye
+// Chemin d'acces : DELETE /employes/: id
 // Suppression d'un employé idEmploye connu
-app.delete('/employes/:idEmploye', (req, res) => {
-    let idEmploye = parse(req.params.idEmploye);
-    let sql_delete = "DELETE FROM ?? WHERE   ?? = " + idEmploye;
+app.delete('/employes/:id', (req, res) => {
+    let id = parseInt(req.params.id);
+    let sql_delete = "DELETE FROM ?? WHERE ?? = " + id;
     let replaces = ['employes', 'id_employe'];
     sql = mysql.format(sql_delete, replaces);   
     console.log(sql);
     // Executer la requête
-    connection.query(sql, function(err, row, fields) {
-        if (err) throw err;
-        res.send(row);
-    });
+     connection.query(sql, function(err, row, fields) {
+         if (err) throw err;
+         res.send(row);
+     });
     res.status(200);
 
 })

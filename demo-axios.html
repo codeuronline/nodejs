@@ -32,7 +32,7 @@
                             </div>                       
                             </td>
                         <td width="10%">
-                            <button v-on:click="delRestaurant($event,restaurant.id_restaurant)">X</button>
+                            <button v-on:click="delRestaurant($event,restaurant.id_restaurant);update()">X</button>
                         </td>
                     </tr>
                     <tr>       
@@ -43,7 +43,7 @@
                 </td>
                     <td width="90%">
                         <div width="100%" style="background-color: antiquewhite;" v-for="employe in team">
-                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<button v-on:click="delPersonnel($event,employe.id_employe)">X</button>
+                            <p v-if="restaurant.id_restaurant===employe.restaurant_id">{{employe.first_name}} {{employe.last_name}}<button v-on:click="delPersonnel($event,employe.id_employe);update()">X</button>
                         </p>
                     </div>
                     </td>      
