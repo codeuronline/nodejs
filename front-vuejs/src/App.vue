@@ -3,7 +3,7 @@
     <router-link to="/">Accueil</router-link> |
     <router-link to="/restaurant">Restaurant</router-link>
   </div>
-  <!-- <router-view/> -->
+  <router-view/>
 </template>
 <style>
 </style>
