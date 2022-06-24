@@ -314,7 +314,22 @@ app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
     let idResto = parseInt(req.params.idResto);
     let sql_delete = "DELETE * FROM ?? WHERE ?? =" + idResto 
     " AND ?? = " + idEmploye;
-    let replaces = ['employes', 'restaurant_id', 'id'];
+    let replaces = ['employes', 'restaurant_id', 'id_employe'];
+    sql = mysql.format(sql_delete, replaces);    
+    // Executer la requête
+    connection.query(sql, function(err, row, fields) {
+        if (err) throw err;
+        res.send(row);
+    });
+    res.status(200);
+
+})
+// Chemin d'acces : DELETE /employes/: idEmploye
+// Suppression d'un employé idEmploye connu
+app.delete('/employes/:idEmploye', (req, res) => {
+    let idEmploye = parse(req.params.idEmploye);
+    let sql_delete = "DELETE * FROM ?? WHERE  AND ?? = " + idEmploye;
+    let replaces = ['employes', 'id_employe'];
     sql = mysql.format(sql_delete, replaces);    
     // Executer la requête
     connection.query(sql, function(err, row, fields) {
