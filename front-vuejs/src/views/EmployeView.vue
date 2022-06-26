@@ -13,6 +13,7 @@
           id="last_name"
           v-model="posts.last_name"
         />
+        <br />
         <label for="first_name"> Prénom :</label>
         <input
           type="text"
@@ -20,6 +21,7 @@
           id="first_name"
           v-model="posts.first_name"
         />
+        <br />
       </fieldset>
       <br />
       <fieldset>
