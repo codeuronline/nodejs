@@ -11,6 +11,7 @@
         placeholder="Nom du restaurant"
         v-model="posts.name"
       />
+      <br />
       <label for="city"> Ville : </label>
       <input
         type="text"
@@ -32,42 +33,54 @@
         v-model="posts.nbCouverts"
       />
       <br />
-      <label for="nbCouverts"> Terrasse : </label>
-      <input
-        type="radio"
-        id="terrasse"
-        name="terrasse"
-        value="oui"
-        checked
-        v-model="posts.terrasse"
-      />oui<input type="radio" id="terrasse" name="terrasse" value="non" />non
+      <fieldset>
+        <legend>Terrasse</legend>
+        <input
+          type="radio"
+          name="terrasse"
+          value="oui"
+          checked
+          v-model="posts.terrasse"
+        />
+        <label for="terrasse">oui</label>
+        <input
+          type="radio"
+          name="terrasse"
+          value="non"
+          v-model="posts.terrasse"
+        />
+        <label for="terrasse">non</label>
+      </fieldset>
       <br />
-      <label for="nbCouverts"> Parking : </label>
-      <input
-        type="radio"
-        id="parking"
-        name="parking"
-        value="oui"
-        checked
-        v-model="posts.parking"
-      />oui
-      <input
-        type="radio"
-        id="parking"
-        name="parking"
-        value="non"
-        v-model="posts.parking"
-      />non
+      <fieldset>
+        <legend>Parking</legend>
+        <input
+          type="radio"
+          name="parking"
+          value="oui"
+          v-model="posts.parking"
+          checked
+        />
+        <label for="parking">oui</label>
+        <input
+          type="radio"
+          id="parking"
+          name="parking"
+          value="non"
+          v-model="posts.parking"
+        />
+        <label for="parking">non</label>
+      </fieldset>
       <br />
-      <button type="submit">Insérer</button> |
-      <button type="cancel">Annuler</button>
+      <button class="btn-submit" type="submit">Insérer</button>
+      <button class="btn-cancel" type="cancel">Annuler</button>
     </form>
   </div>
 </template>
 <script>
 import axios from "axios";
 export default {
-  name: "PostComponent",
+  name: "PostComponentRestaurant",
   data() {
     return {
       posts: {

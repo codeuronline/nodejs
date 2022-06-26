@@ -37,9 +37,11 @@
         <select
           name="restaurant_id"
           id="restaurant_id"
-          v-model="posts.restaurant_id"
+          v-model="restaurants.restaurant_id"
         >
-          <option value="">Séléctionner le restaurant</option>
+          <option value="" :select="selected">
+            Séléctionner le Restaurant
+          </option>
           <option
             v-for="(restaurant, id_restaurant) in restaurants"
             v-bind:key="id_restaurant"
