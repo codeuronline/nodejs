@@ -8,7 +8,7 @@
         id="name"
         name="name"
         value=""
-        placeholder="Entrer le nom du restaurant"
+        placeholder="Nom du restaurant"
         v-model="posts.name"
       />
       <label for="city"> Ville : </label>
@@ -17,7 +17,7 @@
         id="city"
         name="city"
         value=""
-        placeholder="Entrer la ville du restaurant"
+        placeholder="Ville du restaurant"
         v-model="posts.city"
       />
       <br />
@@ -28,7 +28,7 @@
         name="nbCouverts"
         min="1"
         value=""
-        placeholder="Entrer le nombre de couverts"
+        placeholder="Nombre de couverts"
         v-model="posts.nbCouverts"
       />
       <br />
@@ -41,6 +41,7 @@
         checked
         v-model="posts.terrasse"
       />oui<input type="radio" id="terrasse" name="terrasse" value="non" />non
+      <br />
       <label for="nbCouverts"> Parking : </label>
       <input
         type="radio"

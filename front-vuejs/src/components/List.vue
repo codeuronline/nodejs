@@ -2,11 +2,11 @@
   <div id="app">
     <ul>
       <li v-for="(restaurant, index) in restaurants" v-bind:key="index">
-        <table>
+        <table width="1200px">
           <tr>
-            <td width="300px">
+            <td width="800px">
               <div style="background-color: aquamarine">
-                <h1>({{ index }}){{ restaurant.name }})</h1>
+                <h1>{{ restaurant.name }}</h1>
               </div>
             </td>
             <td width="90%">
@@ -38,16 +38,16 @@
                 </h2>
               </div>
             </td>
-            <td width="10%">
+            <td style="text-align: right" width="10%">
               <button
                 v-on:click="delRestaurant($event, restaurant.id_restaurant)"
               >
-                X
+                <img width="40px" src="../assets/delete.webp" alt="supprimer" />
               </button>
             </td>
           </tr>
           <tr>
-            <td width="300px">
+            <td width="800px">
               <div style="background-color: azure">
                 <h1>EQUIPE</h1>
               </div>
@@ -62,7 +62,11 @@
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   {{ employe.first_name }} {{ employe.last_name }}
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
-                    X
+                    <img
+                      width="40px"
+                      src="../assets/delete.webp"
+                      alt="supprimer"
+                    />
                   </button>
                 </p>
               </div>
