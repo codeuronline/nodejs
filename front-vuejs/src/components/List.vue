@@ -84,7 +84,7 @@
         </tr>
       </tbody>
     </table>
-    <button @:click="update()">Mettre à jour</button>
+    <button v-on:click="update()">Mettre à jour</button>
   </div>
 </template>
 <script>

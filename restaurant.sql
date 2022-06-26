@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : dim. 26 juin 2022 à 14:03
+-- Généré le : dim. 26 juin 2022 à 18:05
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.27
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `employes` (
-  `id_employe` int(11) NOT NULL,
+  `id_employe` int(11) UNSIGNED NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `hire_date` date DEFAULT NULL,
@@ -60,7 +60,7 @@ INSERT INTO `employes` (`id_employe`, `first_name`, `last_name`, `hire_date`, `r
 --
 
 CREATE TABLE `restaurants` (
-  `id_restaurant` int(11) NOT NULL,
+  `id_restaurant` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL,
   `nbCouverts` int(11) DEFAULT NULL,
@@ -80,6 +80,38 @@ INSERT INTO `restaurants` (`id_restaurant`, `name`, `city`, `nbCouverts`, `terra
 (5, 'La légende', 'Bora Bora', 18791, 'oui', 'oui'),
 (6, 'Le Tagemahal', 'Ono lulu', 91, 'non', 'oui'),
 (7, 'Le chat qui chante', 'Etoile', 51, 'non', 'oui');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `employes`
+--
+ALTER TABLE `employes`
+  ADD PRIMARY KEY (`id_employe`);
+
+--
+-- Index pour la table `restaurants`
+--
+ALTER TABLE `restaurants`
+  ADD PRIMARY KEY (`id_restaurant`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `employes`
+--
+ALTER TABLE `employes`
+  MODIFY `id_employe` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `restaurants`
+--
+ALTER TABLE `restaurants`
+  MODIFY `id_restaurant` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
