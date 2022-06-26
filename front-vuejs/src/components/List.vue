@@ -6,7 +6,7 @@
           <tr>
             <td width="300px">
               <div style="background-color: aquamarine">
-                <h1>({{ restaurant.name }})</h1>
+                <h1>({{ index }}){{ restaurant.name }})</h1>
               </div>
             </td>
             <td width="90%">
@@ -74,9 +74,7 @@
     <button v-on:click="update()">Mettre à jour</button>
   </div>
 </template>
-
 <script>
-// require("vue/require-v-for-key");
 import axios from "axios";
 export default {
   name: "app",
@@ -87,7 +85,6 @@ export default {
     };
   },
   mounted() {
-    // Ecrire ici la requête axios
     axios
       .get("http://127.0.0.1:5000/restaurants")
       .then((res) => (this.restaurants = res.data));
@@ -113,9 +110,9 @@ export default {
   },
   delRestaurant(event, id) {
     console.log("delRestaurant (id) =>", id);
-    axios.delete("http://127.0.0.1:5000/restaurants/" + id).then(status);
+    axios.delete("http://127.0.0.1:5000/restaurants/" + id).then(axios.status);
     // .catch(error => this.posts=[{"name":"erreur de suppression"}])
-    // console.log(status)
+    console.log(axios.status);
     axios
       .get("http://127.0.0.1:5000/restaurants")
       .then((res) => (this.resto = res.data));

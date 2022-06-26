@@ -4,8 +4,6 @@
   </div>
 </template>
 <script>
-// require("vue/require-v-for-key");
-
 export default {
   name: "app",
   data() {

@@ -108,6 +108,28 @@ const postResto = app.post('/restaurant', (req, res) => {
    });
     res.status(200);
 });
+// Chemin d'acces : POST /employe
+// Ajout d'un employe dans un Restaurant idResto
+app.post('/employe',(req,res)=>{
+    // requete
+    let sql_insert= "INSERT INTO ?? (first_name,last_name,hire_date,restaurant_id)" +
+       " VALUES('"  + req.body.first_name+ "','"
+                    + req.body.last_name + "', '"
+                    + req.body.hire_date + "', '"
+                    + req.body.restaurant_id 
+        + "')";
+    // formater la requete
+    var replaces = ['employes'];
+    sql = mysql.format(sql_insert, replaces);
+    // executer la requete
+    connection.query(sql, function(err, results) {
+        if (err) throw err;
+        console.log("");
+    });
+    res.status(200);
+});
+
+
 // Chemin d'acces : POST /restaurants/: idResto /employe
 // Ajout d'un employe dans un Restaurant idResto
 app.post('/restaurants/:idResto/employe',(req,res)=>{
