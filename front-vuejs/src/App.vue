@@ -1,33 +1,34 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Accueil</router-link> |
-    <router-link to="/restaurant">Restaurant</router-link>
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/restaurant">Ajout de restaurant</router-link> |
+      <router-link to="/Employe">Ajout d'employé</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
+
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
-<script>
-import { createRouter, createWebHistory } from 'vue-router'
-import Accueil from './views/Accueil.vue'
-import Restaurant from './views/Restaurant.vue'
-    const routes = [
-       {
-        path: '/',
-        name: 'Accueil',
-        component: Accueil,
-      },
-      {
-        path: '/restaurant',
-        name: 'Restaurant',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: Restaurant
-      }
-    ]
-    const router = createRouter({
-      history: createWebHistory(process.env.BASE_URL),
-      routes
-    })
-    export default router
-</script>  
