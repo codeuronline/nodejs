@@ -207,7 +207,7 @@ app.get('/restaurant/:idResto/employes', (req, res) => {
 
 });
 
-// Chemin d'acces : GET /restaurants/: id
+// Chemin d'acces : GET /restaurant/: id
 // Accès à un Restaurant id
 app.get('/restaurant/:id', (req, res) => {
     let id = parseInt(req.params.id);
@@ -224,24 +224,24 @@ app.get('/restaurant/:id', (req, res) => {
     res.status(200);
 });
 
-// Chemin d'acces : GET /restaurants/: idResto /employe/: idEmploye
-// Accès à un employé idEmploye d'un restaurant idResto
-app.get('/restaurant/:idResto/employe/:idEmploye', (req, res) => {
-    let idEmploye = parseInt(req.params.idEmploye);
-    let idResto = parseInt(req.params.idResto);
-    // requete
-    var sql_template = "SELECT * FROM ?? WHERE ??=" +
-        idEmploye + " AND ?? =" + idResto;
-    // formater requete
-    var replaces = ['employes', 'id_employe', 'restaurant_id'];
-    sql = mysql.format(sql_template, replaces);
-    // executer la requete
-    connection.query(sql, function (err, rows) {
-        if (err) throw err;
-        res.send(rows)
-    });
-    res.status(200);
-})
+// // Chemin d'acces : GET /restaurants/: idResto /employe/: idEmploye
+// // Accès à un employé idEmploye d'un restaurant idResto
+// app.get('/restaurant/:idResto/employe/:idEmploye', (req, res) => {
+//     let idEmploye = parseInt(req.params.idEmploye);
+//     let idResto = parseInt(req.params.idResto);
+//     // requete
+//     var sql_template = "SELECT * FROM ?? WHERE ??=" +
+//         idEmploye + " AND ?? =" + idResto;
+//     // formater requete
+//     var replaces = ['employes', 'id_employe', 'restaurant_id'];
+//     sql = mysql.format(sql_template, replaces);
+//     // executer la requete
+//     connection.query(sql, function (err, rows) {
+//         if (err) throw err;
+//         res.send(rows)
+//     });
+//     res.status(200);
+// })
 
 /*************************************************************************
 *
@@ -301,7 +301,7 @@ app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
 // Chemin d'acces : DELETE /restaurants/ :id
 // Suppression d'un restaurant id et de tous ces employés rattachés
 
-app.delete('/restaurants/:id', (req, res) => {
+app.delete('/restaurant/:id', (req, res) => {
     let id = parseInt(req.params.id);
     // Coder ici la requête
     let sql_delete_restaurant = "DELETE FROM ?? WHERE ?? = " + id;

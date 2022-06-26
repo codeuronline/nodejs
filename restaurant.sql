@@ -1,9 +1,9 @@
- -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 23 juin 2022 à 14:36
+-- Généré le : dim. 26 juin 2022 à 14:03
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.27
 
@@ -47,7 +47,11 @@ INSERT INTO `employes` (`id_employe`, `first_name`, `last_name`, `hire_date`, `r
 (5, 'Toto', 'FaitduVelo', '2022-05-19', 2),
 (6, 'Tabou', 'Bing', '2022-05-02', 4),
 (7, 'ToWork', 'lastChance', '2022-06-01', 5),
-(8, 'Batavia', 'Laitue', '2022-05-02', 5);
+(8, 'Batavia', 'Laitue', '2022-05-02', 5),
+(9, 'tonton', 'Flingueur', '2022-06-01', 1),
+(10, 'ToWork', 'lastChance', '2022-06-01', 6),
+(11, 'Enrico', 'Blagueur', '2022-05-02', 7),
+(12, 'Grenade', 'Ousama', '2022-06-01', 7);
 
 -- --------------------------------------------------------
 
@@ -72,40 +76,10 @@ INSERT INTO `restaurants` (`id_restaurant`, `name`, `city`, `nbCouverts`, `terra
 (1, 'The Trenchy', 'Grenoble', 14, 'non', 'oui'),
 (2, 'La cuisse de grenouille du code', 'Grenoble', 50, 'oui', 'oui'),
 (3, 'Le Poulet poilu de l\'espace', 'Grenoble', 25, 'oui', 'non'),
-(4, 'la Bamboula Online', 'Mars', 45, 'oui', 'non'),
-(5, 'La légende', 'Bora Bora', 18791, 'oui', 'oui');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `employes`
---
-ALTER TABLE `employes`
-  ADD PRIMARY KEY (`id_employe`);
-
---
--- Index pour la table `restaurants`
---
-ALTER TABLE `restaurants`
-  ADD PRIMARY KEY (`id_restaurant`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `employes`
---
-ALTER TABLE `employes`
-  MODIFY `id_employe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `restaurants`
---
-ALTER TABLE `restaurants`
-  MODIFY `id_restaurant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+(4, 'La Bamboula Online', 'Mars', 45, 'oui', 'non'),
+(5, 'La légende', 'Bora Bora', 18791, 'oui', 'oui'),
+(6, 'Le Tagemahal', 'Ono lulu', 91, 'non', 'oui'),
+(7, 'Le chat qui chante', 'Etoile', 51, 'non', 'oui');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
