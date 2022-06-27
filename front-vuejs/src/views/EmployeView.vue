@@ -1,8 +1,7 @@
 /* eslint-disable */
 <template>
-  <div class="employe">
+  <div class="about">
     <h1>Ajout d'un employé</h1>
-    <Employe msg="Employé" />
     <form @submit="postData" method="post">
       <fieldset>
         <legend>Identité</legend>

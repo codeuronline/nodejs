@@ -95,6 +95,9 @@ app.use(express.json());
 // Ajout d'un Restaurant 
 const postResto = app.post('/restaurant', (req, res) => {
     // requete
+    // on verifie que le choix pour parking et terrasse n 'a pas renvoye null
+    req.body.terrasse =(req.body.terrasse == null) ? "non" :req.body.terrasse;
+    req.body.parking = (req.body.parking == null) ? "non" : req.body.parking;        
     let sql = "INSERT INTO restaurants (name,city,nbCouverts,terrasse,parking)" +
        " VALUES ('" + req.body.name + "', '" 
                     + req.body.city + "', '"
