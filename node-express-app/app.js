@@ -103,8 +103,9 @@ const postResto = app.post('/restaurant', (req, res) => {
                     + req.body.parking  + "')";
     // executer la requete
     connection.query(sql, function(err, results) {
-       if (err) throw err;
-       console.log("");
+        if (err) throw err;
+        console.log("POST => RESTAURANT");
+       console.log("Restaurant ajouté");
    });
     res.status(200);
 });
@@ -124,7 +125,8 @@ app.post('/employe',(req,res)=>{
     // executer la requete
     connection.query(sql, function(err, results) {
         if (err) throw err;
-        console.log("");
+        console.log("POST => EMPLOYE");
+        console.log("Employé ajouté");
     });
     res.status(200);
 });
@@ -147,7 +149,8 @@ app.post('/restaurants/:idResto/employe',(req,res)=>{
     // executer la requete
     connection.query(sql, function(err, results) {
         if (err) throw err;
-        console.log("");
+        console.log("POST => EMPLOYE de RESTAURANT");
+        console.log("Employe ajouté pour le restaurant : "+idResto);
     });
     res.status(200);
 });
@@ -169,6 +172,7 @@ app.get('/restaurants', (req, res) => {
     // executer la requet
     connection.query(sql, function(err, rows) {
         if (err) throw err;
+        console.log("GET => RESTAURANTS");
         res.send(rows)
     });
     res.status(200);
@@ -182,6 +186,7 @@ app.get('/employes', (req, res) => {
     var sql_special = "SELECT * FROM employes ";
     connection.query(sql_special, function(err, rows) {
         if (err) throw err;
+        console.log("GET => EMPLOYES");
         res.send(rows)
     });
     res.status(200);
@@ -200,6 +205,7 @@ app.get('/restaurant/:idResto/employes', (req, res) => {
     // executer la requete
     connection.query(sql, function(err, rows) {
         if (err) throw err;
+       console.log("GET => EMPLOYE de RESTAURANT");
         res.send(rows)
     });
     res.status(200);
@@ -219,7 +225,8 @@ app.get('/restaurant/:id', (req, res) => {
     // executer la requete
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
-    res.send(row);
+        console.log("GET => RESTAURANT "+id);
+        res.send(row);
 });
     res.status(200);
 });
@@ -266,8 +273,9 @@ app.put('/restaurants/:idResto', (req, res) => {
     // Executer la requête
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
-    res.send(row);
-});
+       console.log("UPDATE => RESTAURANT "+idResto);
+        res.send(row);
+    });
     res.status(200);
 
 })
@@ -287,7 +295,8 @@ app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
      // Executer la requête
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
-    res.send(row);
+        console.log("UPDATE => EMPLOYE "+idEmploye+" DE RESTAURANT "+idResto );
+        res.send(row);
 });
     res.status(200);
 })
@@ -312,7 +321,7 @@ app.delete('/restaurant/:id', (req, res) => {
     // Executer la requête
     connection.query(sql1, function (err, row, fields) {
         if (err) throw err;
-        console.log("restaurant supprimé")
+        console.log("DELETE => RESTAURANT "+id)
         //res.send(row);
     });
     
@@ -325,7 +334,7 @@ app.delete('/restaurant/:id', (req, res) => {
     console.log(sql2);
     connection.query(sql2, function(err, row, fields) {
         if (err) throw err;
-        console.log('tous employes du restaurant supprimés')
+        console.log("DELETE => EMPLOYES LIES AU RESTAURANT "+id)
         res.send(row);
     });
     res.status(200);
@@ -346,6 +355,7 @@ app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
     // Executer la requête
     connection.query(sql, function(err, row, fields) {
         if (err) throw err;
+        console.log("DELETE => EMPLOYE "+ idEmploye+" LIE AU RESTAURANT "+idResto)
         res.send(row);
     });
     res.status(200);
@@ -362,6 +372,7 @@ app.delete('/employes/:id', (req, res) => {
     // Executer la requête
      connection.query(sql, function(err, row, fields) {
          if (err) throw err;
+         console.log("DELETE => EMPLOYE " + id);
          res.send(row);
      });
     res.status(200);

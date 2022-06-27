@@ -37,7 +37,7 @@
         <select
           name="restaurant_id"
           id="restaurant_id"
-          v-model="restaurants.restaurant_id"
+          v-model="posts.restaurant_id"
         >
           <option value="" :select="selected">
             Séléctionner le Restaurant

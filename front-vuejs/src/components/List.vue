@@ -131,8 +131,11 @@ export default {
     },
     delPersonnel(event, id) {
       console.log("delPersonnel (id) =>", id);
-      axios.delete("http://127.0.0.1:5000/employes/" + id).then(status);
-
+      axios
+        .delete("http://127.0.0.1:5000/employes/" + id)
+        .then(axios.status)
+        .catch((error) => console.log(error));
+      console.log(axios.status);
       this.update();
       // .catch(error => this.posts=[{"name":"erreur de suppression"}])
       // axios
