@@ -49,7 +49,7 @@
           </option>
         </select>
       </fieldset>
-      <button type="submit">Valider</button> |
+      <button type="submit">Valider</button>&nbsp;&nbsp;
       <button type="cancel">Annuler</button>
     </form>
   </div>

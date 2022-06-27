@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <table class="table table-bordered" width="1600px">
       <thead>
         <tr>
@@ -13,38 +13,38 @@
       <tbody v-for="(restaurant, index) in restaurants" v-bind:key="index">
         <tr>
           <td width="800px">
-            <div width="100%" style="background-color: aquamarine">
-              <h1>{{ restaurant.name }}</h1>
+            <div width="100%">
+              <h3>{{ restaurant.name }}</h3>
             </div>
           </td>
           <td width="90%">
-            <div height="100%" style="background-color: bisque">
-              <h2 v-if="restaurant.nbCouverts != 'false'">
-                {{ restaurant.city }}&nbsp;&nbsp;
-                {{ restaurant.nbCouverts }} couverts
-                <img
-                  width="50px"
-                  height="50px"
-                  v-if="restaurant.parking === 'oui'"
-                  src="../assets/parking.jpg"
-                /><img
-                  width="50px"
-                  height="50px"
-                  v-if="restaurant.parking === 'non'"
-                  src="../assets/noparking.webp"
-                /><img
-                  width="75px"
-                  height="50px"
-                  v-if="restaurant.terrasse === 'oui'"
-                  src="../assets/terrasse.png"
-                /><img
-                  v-if="restaurant.terrasse === 'non'"
-                  width="50px"
-                  height="50px"
-                  src="../assets//noterrasse.jpg"
-                />
-              </h2>
-            </div>
+            <!-- <div height="100%"> -->
+            <h4 v-if="restaurant.nbCouverts != 'false'">
+              {{ restaurant.city }}&nbsp;&nbsp;
+              {{ restaurant.nbCouverts }} couverts
+              <img
+                width="50px"
+                height="50px"
+                v-if="restaurant.parking === 'oui'"
+                src="../assets/parking.jpg"
+              /><img
+                width="50px"
+                height="50px"
+                v-if="restaurant.parking === 'non'"
+                src="../assets/noparking.webp"
+              /><img
+                width="75px"
+                height="50px"
+                v-if="restaurant.terrasse === 'oui'"
+                src="../assets/terrasse.png"
+              /><img
+                v-if="restaurant.terrasse === 'non'"
+                width="50px"
+                height="50px"
+                src="../assets//noterrasse.jpg"
+              />
+            </h4>
+            <!-- </div> -->
           </td>
           <td width="10%">
             <button
@@ -56,20 +56,31 @@
         </tr>
         <tr>
           <td width="800px">
-            <div style="background-color: azure">
-              <h1>EQUIPE</h1>
+            <div width="100%">
+              <h3>EQUIPE</h3>
             </div>
           </td>
           <td width="90%">
             <div
               width="100%"
-              style="background-color: gray"
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
               <h2>
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   {{ employe.first_name }} {{ employe.last_name }}
+                </p>
+              </h2>
+            </div>
+          </td>
+          <td width="10%">
+            <div
+              width="100%"
+              v-for="(employe, index2) in team"
+              v-bind:key="index2"
+            >
+              <h2>
+                <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
                     <img
                       width="40px"
