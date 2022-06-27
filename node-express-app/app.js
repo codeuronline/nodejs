@@ -1,5 +1,4 @@
-
- const express = require('express');
+const express = require('express');
 //const route = require('app');
 let mysql = require('mysql');
 const cors = require('cors');
@@ -116,6 +115,14 @@ const postResto = app.post('/restaurant', (req, res) => {
 // Ajout d'un employe dans un Restaurant idResto
 app.post('/employe',(req,res)=>{
     // requete
+    
+    // const maintenant = new Date();
+    // dateFormat(maintenant, "yyyy-mm-dd")
+    // req.body.hire_date = (req.body.hire_date == null) ? new Date() : req.body.hire_date;
+    // console.log(req.body.hire_date);
+    // seulement pour test avec un id
+    //req.body.restaurant_id =1
+    //req.body.restaurant_id = ((req.body.restaurant_id == null) || (req.body.restaurant_id == "restaurant.restaurant_id")) ? 1 : req.body.restaurant_id;
     let sql_insert= "INSERT INTO ?? (first_name,last_name,hire_date,restaurant_id)" +
        " VALUES('"  + req.body.first_name+ "','"
                     + req.body.last_name + "', '"

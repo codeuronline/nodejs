@@ -2,74 +2,79 @@
   <div class="about">
     <h1>Formulaire Ajout restaurant</h1>
     <form @submit="postData" method="post">
-      <label for="name"> Nom : </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value=""
-        placeholder="Nom du restaurant"
-        v-model="posts.name"
-      />
-      <br />
-      <label for="city"> Ville : </label>
-      <input
-        type="text"
-        id="city"
-        name="city"
-        value=""
-        placeholder="Ville du restaurant"
-        v-model="posts.city"
-      />
-      <br />
-      <label for="nbCouverts"> Nombre de couverts : </label>
-      <input
-        type="number"
-        id="nbCouverts"
-        name="nbCouverts"
-        min="1"
-        value=""
-        placeholder="Nombre de couverts"
-        v-model="posts.nbCouverts"
-      />
-      <br />
       <fieldset>
-        <legend>Terrasse</legend>
+        <legend>[Identifcation]</legend>
+        <label for="name"> Nom : </label>
         <input
-          type="radio"
-          name="terrasse"
-          value="oui"
-          checked
-          v-model="posts.terrasse"
+          type="text"
+          id="name"
+          name="name"
+          value=""
+          placeholder="Nom du restaurant"
+          v-model="posts.name"
         />
-        <label for="terrasse">oui</label>
+        <br />
+        <label for="city"> Ville : </label>
         <input
-          type="radio"
-          name="terrasse"
-          value="non"
-          v-model="posts.terrasse"
+          type="text"
+          id="city"
+          name="city"
+          value=""
+          placeholder="Ville du restaurant"
+          v-model="posts.city"
         />
-        <label for="terrasse">non</label>
       </fieldset>
       <br />
       <fieldset>
-        <legend>Parking</legend>
+        <legend>[Informations]</legend>
         <input
-          type="radio"
-          name="parking"
-          value="oui"
-          v-model="posts.parking"
-          checked
+          type="number"
+          id="nbCouverts"
+          name="nbCouverts"
+          min="1"
+          value=""
+          placeholder="Nombre de couverts"
+          v-model="posts.nbCouverts"
         />
-        <label for="parking">oui</label>
-        <input
-          type="radio"
-          id="parking"
-          name="parking"
-          value="non"
-          v-model="posts.parking"
-        />
-        <label for="parking">non</label>
+        <br />
+        <fieldset>
+          <legend>[Terrasse]</legend>
+          <input
+            type="radio"
+            name="terrasse"
+            value="oui"
+            checked
+            v-model="posts.terrasse"
+          />
+          <label for="terrasse">oui</label>
+          <input
+            type="radio"
+            name="terrasse"
+            value="non"
+            v-model="posts.terrasse"
+          />
+          <label for="terrasse">non</label>
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>[Parking]</legend>
+          <input
+            type="radio"
+            name="parking"
+            value="oui"
+            v-model="posts.parking"
+            checked
+          />
+          <label for="parking">oui</label>
+          <input
+            type="radio"
+            id="parking"
+            name="parking"
+            value="non"
+            v-model="posts.parking"
+          />
+          <label for="parking">non</label>
+        </fieldset>
       </fieldset>
       <br />
       <button class="btn-submit" type="submit">Insérer</button>

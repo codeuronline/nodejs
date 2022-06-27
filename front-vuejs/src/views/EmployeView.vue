@@ -4,47 +4,46 @@
     <h1>Ajout d'un employé</h1>
     <form @submit="postData" method="post">
       <fieldset>
-        <legend>Identité</legend>
-        <label for="last_name"> Nom :</label>
+        <legend>[Identité]</legend>
         <input
           type="text"
           name="last_name"
           id="last_name"
+          placeholder="Nom"
           v-model="posts.last_name"
         />
         <br />
-        <label for="first_name"> Prénom :</label>
         <input
           type="text"
           name="first_name"
           id="first_name"
+          placeholder="Prénom"
           v-model="posts.first_name"
         />
         <br />
       </fieldset>
       <br />
       <fieldset>
-        <legend>Information(s)</legend>
-        <label for="hire_date">Date d'embauche : </label>
+        <legend>[Date d'embauche ]</legend>
         <input
           type="date"
           name="hire_date"
           id="hire_date"
           v-model="posts.hire_date"
+          value="Date()"
         />
-        <label for="restaurant_id"> dans le Restaurant : </label>
+      </fieldset>
+      <fieldset>
+        <legend>[Restaurant]</legend>
         <select
           name="restaurant_id"
           id="restaurant_id"
           v-model="posts.restaurant_id"
         >
-          <option value="" :select="selected">
-            Séléctionner le Restaurant
-          </option>
           <option
-            v-for="(restaurant, id_restaurant) in restaurants"
-            v-bind:key="id_restaurant"
-            value="restaurant.id_restaurant"
+            v-for="(restaurant, index) in restaurants"
+            v-bind:key="index"
+            :value="restaurant.id_restaurant"
           >
             {{ restaurant.name }}
           </option>
@@ -57,6 +56,7 @@
 </template>
 <script>
 import axios from "axios";
+//import dateFormat from "dateFormat";
 export default {
   name: "PostComponent",
   data() {
@@ -65,15 +65,15 @@ export default {
         first_name: null,
         last_name: null,
         hire_date: null,
-        restaurant_id: null,
+        restaurant_id: "",
         id_restaurant: null,
       },
       restaurants: {
-        name: null,
+        name: "",
         city: null,
-        id_restaurant: null,
+        id_restaurant: "",
         // nbCouverts: null,
-        // parking: null,
+        // null, parking: null,
         // terrasse: null,
       },
     };
@@ -81,6 +81,9 @@ export default {
 
   methods: {
     postData(e) {
+      // if (this.posts.hire_date == null) {
+      //   this.posts.hire_date = dateFormat(new Date(), "YYYY-MM-DD");
+      // }
       axios
         .post("http://127.0.0.1:5000/employe/", this.posts)
         .then((result) => {
