@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <span id="information"></span>
     <h1>Formulaire Ajout restaurant</h1>
     <form @submit="postData" method="post">
       <fieldset>

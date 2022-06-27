@@ -1,8 +1,9 @@
 <template>
   <div id="app" class="container">
+    <span id="information"></span>
     <table class="table table-bordered" width="1600px">
       <thead>
-        <tr>
+        <tr class="table table-dark">
           <th scope="col">Nom</th>
           <th scope="col">
             Information (Ville / Nombre de couverts / Parking / Terrasse)
