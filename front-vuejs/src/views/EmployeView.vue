@@ -3,7 +3,7 @@
   <div class="about">
     <h1>Ajout d'un employé</h1>
     <div class="alert alert-warning">
-      <span id="information"></span>
+      <h2><span id="information"></span></h2>
     </div>
     <form @submit="postData" method="post">
       <fieldset>
@@ -14,7 +14,7 @@
           id="last_name"
           placeholder="Nom"
           v-model="posts.last_name"
-          @keyup="verif"
+          @keyup="verifL"
         />
         <br />
         <input
@@ -23,7 +23,7 @@
           id="first_name"
           placeholder="Prénom"
           v-model="posts.first_name"
-          @keypup="verif"
+          @keypup="verifF"
         />
         <br />
       </fieldset>
@@ -35,7 +35,6 @@
           name="hire_date"
           id="hire_date"
           v-model="posts.hire_date"
-          value="Date()"
         />
       </fieldset>
       <fieldset>
@@ -63,7 +62,6 @@
 <script>
 /* eslint-disable */
 import axios from "axios";
-//import dateFormat from "dateFormat";
 export default {
   name: "PostComponent",
   data() {
@@ -87,34 +85,44 @@ export default {
   },
 
   methods: {
-    verif(e) {
+    verifL(e) {
       //&& (document.getElementById("last_name").value.match(/^[a-zA-Z]+$/))) {
       //  cas des 3 caracteres
-      console.log((document.getElementById("last_name").value).length);
-      if ((document.getElementById("first_name").value).length > 2) {
-        document.getElementById("information").innerHTML = "";
-        document.querySelector("button").disabled = false;
-      } else {
-        document.getElementById("information").innerHTML = "Le nom ET le prénom doivent contenir au minimum 3 caractères";
-        document.querySelector("button").disabled = true;
-      }
-        if ((document.getElementById("last_name").value).length > 2) {
+      let ln = document.getElementById("last_name").value
+      console.log(ln)
+         if (ln.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
           document.getElementById("information").innerHTML = "";
           document.querySelector("button").disabled = false;
-        } else {
-          document.getElementById("information").innerHTML = "Le nom ET le prénom doivent contenir au minimum 3 caractères";
-          document.querySelector("button").disabled = true;
-        }
-        if (document.getElementById("last_name").value.match(/^[a-zA-Z]+$/)) {
-          document.getElementById("information").innerHTML = "";
-          document.querySelector("button").disabled = false;
-        } else {
-          document.getElementById("information").innerHTML = "Le nom ET le prénom doivent contenir QUE des caractères";
-          document.querySelector("button").disabled = true;
-        }
+         } else {
+           document.getElementById("information").innerHTML = "Le nom doit contenir QUE des caractères";
+           document.querySelector("button").disabled = true;
+         }
+            
         e.preventDefault();
       
     },
+    verifF(e) {
+      //&& (document.getElementById("last_name").value.match(/^[a-zA-Z]+$/))) {
+      //  cas des 3 caracteres
+    // let fn = document.getElementById("last_name").value
+    //   if (fn.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
+    //       document.getElementById("information").innerHTML = "";
+    //       document.querySelector("button").disabled = false;
+    //      } else {
+    //        document.getElementById("information").innerHTML = "Le nom doit contenir QUE des caractères";
+    //        document.querySelector("button").disabled = true;
+    //      }
+    //     // if (document.getElementById("last_name").value.match(/^[a-zA-Z]+$/)) {
+        //   document.getElementById("information").innerHTML = "";
+        //   document.querySelector("button").disabled = false;
+        // } else {
+        //   document.getElementById("information").innerHTML = "Le nom ET le prénom doivent contenir QUE des caractères";
+        //   document.querySelector("button").disabled = true;
+        // }
+        e.preventDefault();
+      
+    },
+
     postData(e) {
       // if (this.posts.hire_date == null) {
       //   this.posts.hire_date = dateFormat(new Date(), "YYYY-MM-DD");

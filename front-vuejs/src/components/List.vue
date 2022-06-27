@@ -130,16 +130,6 @@ export default {
         .catch((error) => console.log(error));
       console.log(axios.status);
       this.update();
-      // axios
-      //   .get("http://127.0.0.1:5000/restaurants")
-      //   .then((res) => (this.restaurants = res.data));
-      // // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
-      // console.log(this.restaurants);
-      // axios
-      //   .get("http://127.0.0.1:5000/employes")
-      //   .then((res) => (this.team = res.data));
-      // // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
-      // console.log(this.team);
     },
     delPersonnel(event, id) {
       console.log("delPersonnel (id) =>", id);
@@ -149,31 +139,10 @@ export default {
         .catch((error) => console.log(error));
       console.log(axios.status);
       this.update();
-      // .catch(error => this.posts=[{"name":"erreur de suppression"}])
-      // axios
-      //   .get("http://127.0.0.1:5000/restaurants")
-      //   .then((res) => (this.restaurants = res.data));
-      // // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
-      // console.log(this.restaurants);
-      // axios
-      //   .get("http://127.0.0.1:5000/employes")
-      //   .then((res) => (this.team = res.data));
-      // // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
-      // console.log(this.team);
     },
   },
   mounted() {
     this.update();
-
-    // axios
-    //   .get("http://127.0.0.1:5000/restaurants")
-    //   .then((res) => (this.restaurants = res.data)); // .catch(error => this.restaurants = [{ "name": "Erreur de chargement" }])
-    // console.log(this.restaurants);
-    // axios
-    //   .get("http://127.0.0.1:5000/employes")
-    //   .then((res) => (this.team = res.data));
-    // // .catch(error => this.team = [{ "first_name": "Erreur de chargement" }])
-    // console.log(this.team);
   },
 };
 // let app = new Vue({
