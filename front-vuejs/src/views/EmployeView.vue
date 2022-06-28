@@ -5,7 +5,7 @@
       <span id="information"></span>
     </div>
     <div class="container">
-      <h1>Ajout d'un employé</h1>
+      <h1>Formulaire : Ajout d'un Employé</h1>
       <form @submit="postData" method="post">
         <fieldset>
           <legend>Identité</legend>
@@ -104,7 +104,7 @@ export default {
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
-          "le nom doit contenir que des caractères";
+          "le Nom doit contenir au minimum 3 lettres et que des lettres";
       }
       e.preventDefault();
     },
