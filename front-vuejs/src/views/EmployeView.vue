@@ -51,7 +51,7 @@
               <option
                 v-for="(restaurant, index) in restaurants"
                 :key="index"
-                v-bind:value="id_restaurant"
+                :value="id_restaurant"
               >
                 {{ restaurant.name }} {{ index }}
               </option>
