@@ -152,10 +152,9 @@ div {
   border: 1px;
   border-radius: 5px;
 }
-input::placeholder{
-  color:blueviolet;
-  font-style:italic;
+input::placeholder {
+  color: blue;
+  font-style: italic;
   text-align: center;
-  
 }
 </style>
