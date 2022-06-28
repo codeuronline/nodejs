@@ -50,7 +50,7 @@
             >
               <option
                 v-for="(restaurant, id_restaurant) in restaurants"
-                v-bind:key="id_restaurant"
+                :key="id_restaurant"
                 v-bind:value="id_restaurant"
               >
                 {{ restaurant.name }} {{ id_restaurant }}
