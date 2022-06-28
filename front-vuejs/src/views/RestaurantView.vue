@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about" scoped>
     <div id="bulle">
       <span id="information"></span>
     </div>
@@ -12,7 +12,6 @@
           type="text"
           id="name"
           name="name"
-          value=""
           placeholder="Nom du restaurant"
           v-model="posts.name"
         />
@@ -22,7 +21,6 @@
           type="text"
           id="city"
           name="city"
-          value=""
           placeholder="Ville du restaurant"
           v-model="posts.city"
         />
@@ -112,9 +110,23 @@ export default {
       document.querySelector("button").disabled = true;
       setTimeout(function () {
         document.getElementById("information").innerHTML = "";
+        document.getElementById("bulle").className = "";
         document.querySelector("button").disabled = false;
-      }, 4000);
+      }, 3000);
     },
   },
 };
 </script>
+<style scoped>
+div {
+  background-color: bisque;
+  border: 1px;
+  border-radius: 5px;
+}
+input::placeholder{
+  color:blueviolet;
+  font-style:italic;
+  text-align: center;
+  
+}
+</style>

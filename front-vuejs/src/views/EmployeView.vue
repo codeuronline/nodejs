@@ -1,15 +1,14 @@
 /* eslint-disable */
 <template>
-  <div class="about">
+  <div class="about" scoped>
+    <div id="bulle">
+      <span id="information"></span>
+    </div>
     <div class="container">
-      <div class="alert alert-warning">
-        <span id="information"></span>
-      </div>
       <h1>Ajout d'un employé</h1>
       <form @submit="postData" method="post">
         <fieldset>
           <legend>Identité</legend>
-          <label for="last_name"> Nom :</label>
           <input
             type="text"
             name="last_name"
@@ -18,8 +17,9 @@
             v-model="posts.last_name"
             @keyup="verifLast"
           />
-          <br />
-          <label for="first_name"> Prénom :</label>
+        </fieldset>
+        <br />
+        <fieldset>
           <input
             type="text"
             name="first_name"
@@ -28,35 +28,40 @@
             v-model="posts.first_name"
             @keyup="verifFirst"
           />
-          <br />
         </fieldset>
         <br />
         <fieldset>
           <legend>Information(s)</legend>
-          <label for="hire_date">Date d'embauche : </label>
-          <input
-            type="date"
-            name="hire_date"
-            id="hire_date"
-            v-model="posts.hire_date"
-          />
-          <label for="restaurant_id"> dans le Restaurant : </label>
-          <select
-            name="restaurant_id"
-            id="restaurant_id"
-            v-model="posts.restaurant_id"
-          >
-            <option
-              v-for="(restaurant, id_restaurant) in restaurants"
-              v-bind:key="id_restaurant"
-              :value="id_restaurant"
+          <fieldset>
+            <legend>[Date d'embauche]</legend>
+            <input
+              type="date"
+              name="hire_date"
+              id="hire_date"
+              v-model="posts.hire_date"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>[Restaurant]</legend>
+            <select
+              name="restaurant_id"
+              id="restaurant_id"
+              v-model="posts.restaurant_id"
             >
-              {{ restaurant.name }} {{ restaurant.id_restaurant }}
-            </option>
-          </select>
+              <option
+                v-for="(restaurant, id_restaurant) in restaurants"
+                v-bind:key="id_restaurant"
+                :value="id_restaurant"
+              >
+                {{ restaurant.name }} {{ restaurant.id_restaurant }}
+              </option>
+            </select>
+          </fieldset>
         </fieldset>
-        <button id="button" type="submit">Valider</button>&nbsp;&nbsp;
-        <button type="cancel">Annuler</button>
+        <br />
+        <button class="btn-primary" id="button" type="submit">Valider</button
+        >&nbsp;&nbsp;
+        <button class="btn-primary" type="cancel">Annuler</button>
       </form>
     </div>
   </div>
@@ -71,13 +76,13 @@ export default {
         first_name: null,
         last_name: null,
         hire_date: new Date(),
-        restaurant_id: null,
-        id_restaurant: null,
+        restaurant_id: 1,
+        id_restaurant: 1,
       },
       restaurants: {
         name: null,
         city: null,
-        id_restaurant: null,
+        id_restaurant: 1,
         // nbCouverts: null,
         // parking: null,
         // terrasse: null,
@@ -86,6 +91,7 @@ export default {
   },
   methods: {
     verifLast(e) {
+      document.getElementById("bulle").className = "alert alert-waring";
       let ln = document.getElementById("last_name").value;
       console.log(ln);
       if (ln.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
@@ -99,6 +105,7 @@ export default {
       e.preventDefault();
     },
     verifFirst(e) {
+      document.getElementById("bulle").className = "alert alert-warning";
       let fn = document.getElementById("first_name").value;
       console.log(fn);
       if (fn.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
@@ -117,6 +124,14 @@ export default {
         .then((result) => {
           console.console.log(result);
         });
+      document.getElementById("bulle").className = "alert alert-success";
+      document.getElementById("information").innerHTML = "Restaurant Ajouté";
+      document.querySelector("button").disabled = true;
+      setTimeout(function () {
+        document.getElementById("information").innerHTML = "";
+        document.getElementById("bulle").className = "";
+        document.querySelector("button").disabled = false;
+      }, 3000);
       e.preventDefault();
     },
   },
@@ -131,3 +146,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+div {
+  background-color: bisque;
+  border: 1px;
+  border-radius: 5px;
+}
+input::placeholder{
+  color:blueviolet;
+  font-style:italic;
+  text-align: center;
+  
+}
+</style>
