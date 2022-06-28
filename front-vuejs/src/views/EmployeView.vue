@@ -2,8 +2,10 @@
 <template>
   <div class="about">
     <div class="container">
+      <div class="alert alert-warning">
+        <span id="information"></span>
+      </div>
       <h1>Ajout d'un employé</h1>
-      <span id="information" class="alert alert-warning"></span>
       <form @submit="postData" method="post">
         <fieldset>
           <legend>Identité</legend>
@@ -11,6 +13,7 @@
           <input
             type="text"
             name="last_name"
+            placeholder="Entrer le Nom"
             id="last_name"
             v-model="posts.last_name"
             @keyup="verifLast"
@@ -21,6 +24,7 @@
             type="text"
             name="first_name"
             id="first_name"
+            placeholder="Entrer le Prénom"
             v-model="posts.first_name"
             @keyup="verifFirst"
           />
@@ -42,19 +46,17 @@
             id="restaurant_id"
             v-model="posts.restaurant_id"
           >
-            <option value="" :select="selected">
-              Séléctionner le Restaurant
-            </option>
+            <option value="">Séléctionner le Restaurant</option>
             <option
-              v-for="(restaurant, id_restaurant) in restaurants"
-              v-bind:key="id_restaurant"
-              value="restaurant.id_restaurant"
+              v-for="(restaurant, restaurant_id) in restaurants"
+              v-bind:key="restaurant_id"
+              :value="restaurant_id"
             >
               {{ restaurant.name }}
             </option>
           </select>
         </fieldset>
-        <button id="button" type="submit">Valider</button> |
+        <button id="button" type="submit">Valider</button>&nbsp;&nbsp;
         <button type="cancel">Annuler</button>
       </form>
     </div>
@@ -106,7 +108,7 @@ export default {
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
-          "le prénom doit contenir que des caractères";
+          "le prénom doit contenir au minimum 3 lettres et que des lettres";
       }
       e.preventDefault();
     },
@@ -119,7 +121,11 @@ export default {
       e.preventDefault();
     },
   },
-  mounted() {
+  created() {
+    // if (document.getElementById("information").innerHTML == "") {
+    //   document.getElementsByClassName("alert alert-warning").style.display =
+    //     "none";
+    // }
     axios
       .get("http://127.0.0.1:5000/restaurants")
       .then((res) => (this.restaurants = res.data));

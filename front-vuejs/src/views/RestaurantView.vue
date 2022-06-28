@@ -4,8 +4,8 @@
     <h1>Formulaire Ajout restaurant</h1>
     <form @submit="postData" method="post">
       <fieldset>
-        <legend>[Identifcation]</legend>
-        <label for="name"> Nom : </label>
+        <legend>[Identification]</legend>
+        <!-- <label for="name"> Nom : </label> -->
         <input
           type="text"
           id="name"
@@ -15,7 +15,7 @@
           v-model="posts.name"
         />
         <br />
-        <label for="city"> Ville : </label>
+        <!-- <label for="city"> Ville : </label> -->
         <input
           type="text"
           id="city"
@@ -44,7 +44,6 @@
             type="radio"
             name="terrasse"
             value="oui"
-            checked
             v-model="posts.terrasse"
           />
           <label for="terrasse">oui</label>
@@ -78,8 +77,8 @@
         </fieldset>
       </fieldset>
       <br />
-      <button class="btn-submit" type="submit">Insérer</button>
-      <button class="btn-cancel" type="cancel">Annuler</button>
+      <button class="btn-primary" type="submit">Insérer</button>&nbsp;&nbsp;
+      <button class="btn-primary" type="cancel">Annuler</button>
     </form>
   </div>
 </template>
