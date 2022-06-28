@@ -42,13 +42,13 @@
             id="restaurant_id"
             v-model="posts.restaurant_id"
           >
-            <option value="" :select="selected">
+            <option value="null" :select="selected">
               Séléctionner le Restaurant
             </option>
             <option
               v-for="(restaurant, id_restaurant) in restaurants"
               v-bind:key="id_restaurant"
-              value="restaurant.id_restaurant"
+              :value="restaurant.id_restaurant"
             >
               {{ restaurant.name }}
             </option>
@@ -74,7 +74,7 @@ export default {
         id_restaurant: null,
       },
       restaurants: {
-        name: null,
+        name: "Selectionner un Restaurant",
         city: null,
         id_restaurant: null,
         // nbCouverts: null,
