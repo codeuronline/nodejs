@@ -49,11 +49,11 @@
               v-model="posts.restaurant_id"
             >
               <option
-                v-for="(restaurant, index) in restaurants"
-                :key="index"
-                :value="id_restaurant"
+                v-for="(restaurant, id_restaurant) in restaurants"
+                v-bind:key="id_restaurant"
+                v-bind:value="id_restaurant"
               >
-                {{ restaurant.name }} {{ index }}
+                {{ restaurant.name }} {{ id_restaurant }}
               </option>
             </select>
           </fieldset>
@@ -94,7 +94,11 @@ export default {
       document.getElementById("bulle").className = "alert alert-waring";
       let ln = document.getElementById("last_name").value;
       console.log(ln);
-      if (ln.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
+      if (
+        ln.match(
+          /^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/
+        )
+      ) {
         document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML = "";
       } else {
@@ -108,7 +112,11 @@ export default {
       document.getElementById("bulle").className = "alert alert-warning";
       let fn = document.getElementById("first_name").value;
       console.log(fn);
-      if (fn.match(/^[a-zA-Z][a-zA-Z][a-zA-Z]+$/)) {
+      if (
+        fn.match(
+          /^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/
+        )
+      ) {
         document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML = "";
       } else {
