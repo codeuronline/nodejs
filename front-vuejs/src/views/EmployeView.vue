@@ -76,7 +76,7 @@ export default {
       posts: {
         first_name: null,
         last_name: null,
-        hire_date: new Date("yyyy-MM-dd"),
+        hire_date: new Date(),
         restaurant_id: null,
       },
       restaurants: {
