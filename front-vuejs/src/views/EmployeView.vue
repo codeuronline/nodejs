@@ -5,7 +5,7 @@
       <span id="information"></span>
     </div>
     <div class="container">
-      <h1>Ajout d'un employé</h1>
+      <h1>Formulaire : Ajout d'un Employé</h1>
       <form @submit="postData" method="post">
         <fieldset>
           <legend>Identité</legend>
@@ -33,7 +33,7 @@
         <fieldset>
           <legend>Information(s)</legend>
           <fieldset>
-            <legend>[Date d'embauche]</legend>
+            <legend>Date d'embauche :</legend>
             <input
               type="date"
               name="hire_date"
@@ -41,8 +41,9 @@
               v-model="posts.hire_date"
             />
           </fieldset>
+          <br />
           <fieldset>
-            <legend>[Restaurant]</legend>
+            <legend>Restaurant</legend>
             <select
               name="restaurant_id"
               id="restaurant_id"
@@ -50,10 +51,10 @@
             >
               <option
                 v-for="(restaurant, id_restaurant) in restaurants"
-                :key="id_restaurant"
-                v-bind:value="id_restaurant"
+                v-bind:key="id_restaurant"
+                :value="restaurant.id_restaurant"
               >
-                {{ restaurant.name }} {{ id_restaurant }}
+                {{ restaurant.name }}
               </option>
             </select>
           </fieldset>
@@ -76,13 +77,12 @@ export default {
         first_name: null,
         last_name: null,
         hire_date: new Date(),
-        restaurant_id: 1,
-        id_restaurant: 1,
+        restaurant_id: null,
       },
       restaurants: {
-        name: null,
+        name: "Selectionnez un Restaurant",
         city: null,
-        id_restaurant: 1,
+        id_restaurant: null,
         // nbCouverts: null,
         // parking: null,
         // terrasse: null,
@@ -104,7 +104,7 @@ export default {
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
-          "le nom doit contenir que des caractères";
+          "le Nom doit contenir au minimum 3 lettres et que des lettres";
       }
       e.preventDefault();
     },

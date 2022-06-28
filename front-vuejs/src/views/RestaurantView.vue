@@ -3,83 +3,85 @@
     <div id="bulle">
       <span id="information"></span>
     </div>
-    <h1>Formulaire Ajout restaurant</h1>
-    <form @submit="postData" method="post">
-      <fieldset>
-        <legend>[Identification]</legend>
-        <!-- <label for="name"> Nom : </label> -->
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Nom du restaurant"
-          v-model="posts.name"
-        />
-        <br />
-        <!-- <label for="city"> Ville : </label> -->
-        <input
-          type="text"
-          id="city"
-          name="city"
-          placeholder="Ville du restaurant"
-          v-model="posts.city"
-        />
-      </fieldset>
-      <br />
-      <fieldset>
-        <legend>[Informations]</legend>
-        <input
-          type="number"
-          id="nbCouverts"
-          name="nbCouverts"
-          min="1"
-          value="1"
-          placeholder="Nombre de couverts"
-          v-model="posts.nbCouverts"
-        />
-        <br />
+    <div class="container">
+      <h1>Formulaire : Ajout restaurant</h1>
+      <form @submit="postData" method="post">
         <fieldset>
-          <legend>[Terrasse]</legend>
+          <legend>[Identification]</legend>
+          <!-- <label for="name"> Nom : </label> -->
           <input
-            type="radio"
-            name="terrasse"
-            value="oui"
-            v-model="posts.terrasse"
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nom du restaurant"
+            v-model="posts.name"
           />
-          <label for="terrasse">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
+          <br />
+          <!-- <label for="city"> Ville : </label> -->
           <input
-            type="radio"
-            name="terrasse"
-            value="non"
-            v-model="posts.terrasse"
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Ville du restaurant"
+            v-model="posts.city"
           />
-          <label for="terrasse">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
         </fieldset>
         <br />
         <fieldset>
-          <legend>[Parking]</legend>
+          <legend>[Informations]</legend>
           <input
-            type="radio"
-            name="parking"
-            value="oui"
-            v-model="posts.parking"
-            checked
+            type="number"
+            id="nbCouverts"
+            name="nbCouverts"
+            min="1"
+            value="1"
+            placeholder="Nombre de couverts"
+            v-model="posts.nbCouverts"
           />
-          <label for="parking">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
-          <input
-            type="radio"
-            id="parking"
-            name="parking"
-            value="non"
-            v-model="posts.parking"
-          />
-          <label for="parking">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
+          <br />
+          <fieldset>
+            <legend>[Terrasse]</legend>
+            <input
+              type="radio"
+              name="terrasse"
+              value="oui"
+              v-model="posts.terrasse"
+            />
+            <label for="terrasse">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
+            <input
+              type="radio"
+              name="terrasse"
+              value="non"
+              v-model="posts.terrasse"
+            />
+            <label for="terrasse">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
+          </fieldset>
+          <br />
+          <fieldset>
+            <legend>[Parking]</legend>
+            <input
+              type="radio"
+              name="parking"
+              value="oui"
+              v-model="posts.parking"
+              checked
+            />
+            <label for="parking">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
+            <input
+              type="radio"
+              id="parking"
+              name="parking"
+              value="non"
+              v-model="posts.parking"
+            />
+            <label for="parking">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
+          </fieldset>
         </fieldset>
-      </fieldset>
-      <br />
-      <button class="btn-primary" type="submit">Insérer</button>&nbsp;&nbsp;
-      <button class="btn-primary" type="cancel">Annuler</button>
-    </form>
+        <br />
+        <button class="btn-primary" type="submit">Insérer</button>&nbsp;&nbsp;
+        <button class="btn-primary" type="cancel">Annuler</button>
+      </form>
+    </div>
   </div>
 </template>
 <script>
