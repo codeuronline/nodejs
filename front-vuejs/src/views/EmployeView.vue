@@ -49,11 +49,11 @@
               v-model="posts.restaurant_id"
             >
               <option
-                v-for="(restaurant, id_restaurant) in restaurants"
-                v-bind:key="id_restaurant"
-                :value="id_restaurant"
+                v-for="(restaurant, index) in restaurants"
+                :key="index"
+                v-bind:value="id_restaurant"
               >
-                {{ restaurant.name }} {{ restaurant.id_restaurant }}
+                {{ restaurant.name }} {{ index }}
               </option>
             </select>
           </fieldset>
