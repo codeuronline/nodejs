@@ -46,13 +46,12 @@
             id="restaurant_id"
             v-model="posts.restaurant_id"
           >
-            <option value="">Séléctionner le Restaurant</option>
             <option
-              v-for="(restaurant, restaurant_id) in restaurants"
-              v-bind:key="restaurant_id"
-              :value="restaurant_id"
+              v-for="(restaurant, id_restaurant) in restaurants"
+              v-bind:key="id_restaurant"
+              :value="id_restaurant"
             >
-              {{ restaurant.name }}
+              {{ restaurant.name }} {{ restaurant.id_restaurant }}
             </option>
           </select>
         </fieldset>
@@ -71,7 +70,7 @@ export default {
       posts: {
         first_name: null,
         last_name: null,
-        hire_date: null,
+        hire_date: new Date(),
         restaurant_id: null,
         id_restaurant: null,
       },

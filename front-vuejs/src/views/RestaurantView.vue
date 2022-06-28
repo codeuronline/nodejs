@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <span id="information"></span>
+    <div id="bulle">
+      <span id="information"></span>
+    </div>
     <h1>Formulaire Ajout restaurant</h1>
     <form @submit="postData" method="post">
       <fieldset>
@@ -33,7 +35,7 @@
           id="nbCouverts"
           name="nbCouverts"
           min="1"
-          value=""
+          value="1"
           placeholder="Nombre de couverts"
           v-model="posts.nbCouverts"
         />
@@ -46,14 +48,14 @@
             value="oui"
             v-model="posts.terrasse"
           />
-          <label for="terrasse">oui</label>
+          <label for="terrasse">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
           <input
             type="radio"
             name="terrasse"
             value="non"
             v-model="posts.terrasse"
           />
-          <label for="terrasse">non</label>
+          <label for="terrasse">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
         </fieldset>
         <br />
         <fieldset>
@@ -65,7 +67,7 @@
             v-model="posts.parking"
             checked
           />
-          <label for="parking">oui</label>
+          <label for="parking">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
           <input
             type="radio"
             id="parking"
@@ -73,7 +75,7 @@
             value="non"
             v-model="posts.parking"
           />
-          <label for="parking">non</label>
+          <label for="parking">&nbsp;&nbsp;non&nbsp;&nbsp;</label>
         </fieldset>
       </fieldset>
       <br />
@@ -91,9 +93,9 @@ export default {
       posts: {
         name: null,
         city: null,
-        nbCouverts: null,
-        terrasse: null,
-        parking: null,
+        nbCouverts: 1,
+        terrasse: "non",
+        parking: "non",
       },
     };
   },
@@ -105,6 +107,13 @@ export default {
           console.console.log(result);
         });
       e.preventDefault();
+      document.getElementById("bulle").className = "alert alert-success";
+      document.getElementById("information").innerHTML = "Restaurant Ajouté";
+      document.querySelector("button").disabled = true;
+      setTimeout(function () {
+        document.getElementById("information").innerHTML = "";
+        document.querySelector("button").disabled = false;
+      }, 4000);
     },
   },
 };
