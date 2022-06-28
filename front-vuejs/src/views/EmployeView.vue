@@ -70,7 +70,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "PostComponent",
+  name: "PostComponentEmploye",
   data() {
     return {
       posts: {
@@ -82,7 +82,7 @@ export default {
       restaurants: {
         name: "Selectionnez un Restaurant",
         city: null,
-        id_restaurant: null,
+        id_restaurant: "",
         // nbCouverts: null,
         // parking: null,
         // terrasse: null,
