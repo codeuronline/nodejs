@@ -13,6 +13,8 @@ var connection = mysql.createConnection({
     password: ""
 });
 
+function remplaceFromBD(element)
+return element.split("").join("");
 //connect a la bd
 connection.connect(function (err) {
     if (err) throw err;
@@ -93,7 +95,10 @@ app.use(express.json());
 // Chemin d'acces : POST /restaurant
 // Ajout d'un Restaurant 
 const postResto = app.post('/restaurant', (req, res) => {
+    
     // requete
+    // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
+    req.body.name = remplace(req.body.name);
     // on verifie que le choix pour parking et terrasse n 'a pas renvoye null
     req.body.terrasse =(req.body.terrasse == null) ? "non" :req.body.terrasse;
     req.body.parking = (req.body.parking == null) ? "non" : req.body.parking;        
@@ -115,7 +120,9 @@ const postResto = app.post('/restaurant', (req, res) => {
 // Ajout d'un employe dans un Restaurant idResto
 app.post('/employe',(req,res)=>{
     // requete
-    
+    // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
+    req.body.first_name = remplaceToBD(req.body.first_name);
+    req.body.last_name = remplaceToBD(req.body.last_name);
     // const maintenant = new Date();
     // dateFormat(maintenant, "yyyy-mm-dd")
     // req.body.hire_date = (req.body.hire_date == null) ? new Date() : req.body.hire_date;

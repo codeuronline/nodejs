@@ -2,7 +2,7 @@
   <div class="home">
     <h2>
       <img width="50px" alt="Vue logo" src="../assets/restaurant.png" />
-      Dashboard : Restaurants inscrits en Base de donnée
+      Dashboard : Restaurants inscrits en Base de données
     </h2>
     <List msg="Liste des restaurants" />
   </div>

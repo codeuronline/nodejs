@@ -133,7 +133,7 @@ export default {
           console.console.log(result);
         });
       document.getElementById("bulle").className = "alert alert-success";
-      document.getElementById("information").innerHTML = "Restaurant Ajouté";
+      document.getElementById("information").innerHTML = "Employé Ajouté";
       document.querySelector("button").disabled = true;
       setTimeout(function () {
         document.getElementById("information").innerHTML = "";
