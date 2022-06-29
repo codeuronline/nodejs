@@ -31,7 +31,7 @@
         </fieldset>
         <br />
         <fieldset>
-          <legend>Information(s)</legend>
+          <legend>Informations</legend>
           <fieldset>
             <legend>Date d'embauche :</legend>
             <input

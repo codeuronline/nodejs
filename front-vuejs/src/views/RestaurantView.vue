@@ -33,9 +33,8 @@
             type="number"
             id="nbCouverts"
             name="nbCouverts"
-            min="1"
-            value="1"
             placeholder="Nombre de couverts"
+            value=""
             v-model="posts.nbCouverts"
           />
           <br />
@@ -93,7 +92,7 @@ export default {
       posts: {
         name: null,
         city: null,
-        nbCouverts: 1,
+        nbCouverts: "",
         terrasse: "non",
         parking: "non",
       },
