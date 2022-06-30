@@ -1,7 +1,9 @@
 <template>
   <div class="about" scoped>
     <div id="bulle">
-      <span id="information"></span>
+      <h2>
+        <span id="information"></span>
+      </h2>
     </div>
     <div class="container">
       <h1>Formulaire : Ajout restaurant</h1>
@@ -15,6 +17,7 @@
             name="name"
             placeholder="Nom du restaurant"
             v-model="posts.name"
+            @keyup="verifName"
           />
           <br />
           <!-- <label for="city"> Ville : </label> -->
@@ -24,6 +27,7 @@
             name="city"
             placeholder="Ville du restaurant"
             v-model="posts.city"
+            @keyup="verifCity"
           />
         </fieldset>
         <br />
@@ -36,6 +40,7 @@
             placeholder="Nombre de couverts"
             value=""
             v-model="posts.nbCouverts"
+            @keyup="verifNbCouverts"
           />
           <br />
           <fieldset>
@@ -77,7 +82,8 @@
           </fieldset>
         </fieldset>
         <br />
-        <button class="btn-primary" type="submit">Insérer</button>&nbsp;&nbsp;
+        <button id="button" class="btn-primary" type="submit">Insérer</button
+        >&nbsp;&nbsp;
         <button class="btn-primary" type="cancel">Annuler</button>
       </form>
     </div>
@@ -98,30 +104,41 @@ export default {
       },
     };
   },
-  methods: {    verifLast(e) {
+  methods: {
+    verifNbCouverts(e) {
       document.getElementById("bulle").className = "alert alert-waring";
-      let ln = document.getElementById("last_name").value;
-      console.log(ln);
-      if (
-        ln.match(
-          /^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/
-        )
-      ) {
+      let nbc = document.getElementById("nbCouverts").value;
+      console.log(nbc);
+      if (nbc <= 1) {
         document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML = "";
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
-          "le Nom doit contenir au minimum 3 lettres et que des lettres";
+          "le nombre indiqué doit être positif";
       }
       e.preventDefault();
     },
-    verifFirst(e) {
+    verifName(e) {
+      document.getElementById("bulle").className = "alert alert-waring";
+      let rn = document.getElementById("name").value;
+      console.log(rn);
+      if (rn.match(/^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/)) {
+        document.getElementById("button").disabled = false;
+        document.getElementById("information").innerHTML = "";
+      } else {
+        document.getElementById("button").disabled = true;
+        document.getElementById("information").innerHTML =
+          "caractères non autorisés";
+      }
+      e.preventDefault();
+    },
+    verifCity(e) {
       document.getElementById("bulle").className = "alert alert-warning";
-      let fn = document.getElementById("first_name").value;
-      console.log(fn);
+      let cn = document.getElementById("city").value;
+      console.log(cn);
       if (
-        fn.match(
+        cn.match(
           /^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/
         )
       ) {
@@ -130,11 +147,14 @@ export default {
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
-          "le prénom doit contenir au minimum 3 lettres et que des lettres";
+          "la Ville doit contenir au minimum 3 lettres et que des lettres";
       }
       e.preventDefault();
     },
     postData(e) {
+      this.verifCity;
+      this.verifName;
+      this.verifNbCouverts;
       axios
         .post("http://127.0.0.1:5000/restaurant", this.posts)
         .then((result) => {

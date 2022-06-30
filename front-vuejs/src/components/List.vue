@@ -110,6 +110,12 @@ export default {
     };
   },
   methods: {
+    // convertFromBd(elements) {
+    //   for (const element of elements) {
+    //     element.value.split("&apos;").join("\'");
+    //   }
+    //   return elements;
+    // },
     update() {
       axios
         .get("http://127.0.0.1:5000/restaurants")

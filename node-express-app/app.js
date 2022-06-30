@@ -12,7 +12,10 @@ var connection = mysql.createConnection({
     user: "root",
     password: ""
 });
-
+function remplaceToBd(element) {
+    console.log("element")
+    return element.split("'").join("''");
+}
 //connect a la bd
 connection.connect(function (err) {
     if (err) throw err;
@@ -96,7 +99,8 @@ const postResto = app.post('/restaurant', (req, res) => {
     
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
-    req.body.name = remplace(req.body.name);
+    req.body.name = remplaceToBd(req.body.name);
+    req.body.city= remplaceToBd(req.body.city)
     // on verifie que le choix pour parking et terrasse n 'a pas renvoye null
     req.body.terrasse =(req.body.terrasse == null) ? "non" :req.body.terrasse;
     req.body.parking = (req.body.parking == null) ? "non" : req.body.parking;        
@@ -119,8 +123,8 @@ const postResto = app.post('/restaurant', (req, res) => {
 app.post('/employe',(req,res)=>{
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
-    req.body.first_name = remplaceToBD(req.body.first_name);
-    req.body.last_name = remplaceToBD(req.body.last_name);
+    req.body.first_name = remplaceToBd(req.body.first_name);
+    req.body.last_name = remplaceToBd(req.body.last_name);
     // const maintenant = new Date();
     // dateFormat(maintenant, "yyyy-mm-dd")
     // req.body.hire_date = (req.body.hire_date == null) ? new Date() : req.body.hire_date;
