@@ -124,7 +124,7 @@ export default {
     verifName(e) {
       document.getElementById("bulle").className = "alert alert-warning";
       let rn = document.getElementById("name").value;
-      if (rn == "" || rn == null) {
+      if (!rn) {
         document.getElementById("bulle").style.visibility = "hidden";
       }
       console.log(rn);
@@ -134,16 +134,16 @@ export default {
         document.getElementById("information").innerHTML = "";
       } else {
         document.getElementById("button").disabled = true;
-        document.getElementById("bulle").style.visibility = "visible";
+
         document.getElementById("information").innerHTML =
-          "Le Nom de restaurant doit contenir que des caractères autorisés ET au moins 2 caractères";
+          "Le Nom de restaurant doit contenir<br> que des caractères autorisés<br> ET au moins 2 caractères";
       }
       e.preventDefault();
     },
     verifCity(e) {
       document.getElementById("bulle").className = "alert alert-warning";
       let cn = document.getElementById("city").value;
-      if (cn == "" || cn == null) {
+      if (!cn) {
         document.getElementById("bulle").style.visibility = "hidden";
       }
       console.log(cn);
@@ -154,6 +154,7 @@ export default {
       ) {
         document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML = "";
+        document.getElementById("bulle").style.visibility = "hidden";
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML =
