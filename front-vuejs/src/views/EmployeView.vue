@@ -157,12 +157,12 @@ export default {
       e.preventDefault();
     },
   },
-  created() {
+  async mounted() {
     // if (document.getElementById("information").innerHTML == "") {
     //   document.getElementsByClassName("alert alert-warning").style.display =
     //     "none";
     // }
-    axios
+    await axios
       .get("http://127.0.0.1:5000/restaurants")
       .then((res) => (this.restaurants = res.data));
   },
