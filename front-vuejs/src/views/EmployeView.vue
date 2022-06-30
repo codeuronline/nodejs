@@ -31,7 +31,7 @@
         </fieldset>
         <br />
         <fieldset>
-          <legend>Information(s)</legend>
+          <legend>Informations</legend>
           <fieldset>
             <legend>Date d'embauche :</legend>
             <input
@@ -49,6 +49,7 @@
               id="restaurant_id"
               v-model="posts.restaurant_id"
             >
+              <option value="" disabled>{{ selected }}</option>
               <option
                 v-for="(restaurant, id_restaurant) in restaurants"
                 v-bind:key="id_restaurant"
@@ -73,6 +74,7 @@ export default {
   name: "PostComponentEmploye",
   data() {
     return {
+      selected: "Sélectionner le restaurant",
       posts: {
         first_name: null,
         last_name: null,
@@ -80,7 +82,7 @@ export default {
         restaurant_id: null,
       },
       restaurants: {
-        name: "Selectionnez un Restaurant",
+        name: "",
         city: null,
         id_restaurant: "",
         // nbCouverts: null,

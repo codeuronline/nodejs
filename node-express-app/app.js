@@ -13,7 +13,6 @@ var connection = mysql.createConnection({
     password: ""
 });
 
-
 //connect a la bd
 connection.connect(function (err) {
     if (err) throw err;
