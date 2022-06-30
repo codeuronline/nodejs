@@ -1,70 +1,72 @@
 /* eslint-disable */
 <template>
   <div class="about" scoped>
-    <div id="bulle">
-      <span id="information"></span>
-    </div>
-    <div class="container">
-      <h1>Formulaire : Ajout d'un Employé</h1>
-      <form @submit="postData" method="post">
-        <fieldset>
-          <legend>Identité</legend>
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Entrer le Nom"
-            id="last_name"
-            v-model="posts.last_name"
-            @keyup="verifLast"
-          />
-        </fieldset>
-        <br />
-        <fieldset>
-          <input
-            type="text"
-            name="first_name"
-            id="first_name"
-            placeholder="Entrer le Prénom"
-            v-model="posts.first_name"
-            @keyup="verifFirst"
-          />
-        </fieldset>
-        <br />
-        <fieldset>
-          <legend>Informations</legend>
+    <div class="cadre">
+      <div id="bulle">
+        <span id="information"></span>
+      </div>
+      <div class="container">
+        <h1>Formulaire : Ajout d'un Employé</h1>
+        <form @submit="postData" method="post">
           <fieldset>
-            <legend>Date d'embauche :</legend>
+            <legend>Identité</legend>
             <input
-              type="date"
-              name="hire_date"
-              id="hire_date"
-              v-model="posts.hire_date"
+              type="text"
+              name="last_name"
+              placeholder="Entrer le Nom"
+              id="last_name"
+              v-model="posts.last_name"
+              @keyup="verifLast"
             />
           </fieldset>
           <br />
           <fieldset>
-            <legend>Restaurant</legend>
-            <select
-              name="restaurant_id"
-              id="restaurant_id"
-              v-model="posts.restaurant_id"
-            >
-              <option value="" disabled>{{ selected }}</option>
-              <option
-                v-for="(restaurant, id_restaurant) in restaurants"
-                v-bind:key="id_restaurant"
-                :value="restaurant.id_restaurant"
-              >
-                {{ restaurant.name }}
-              </option>
-            </select>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              placeholder="Entrer le Prénom"
+              v-model="posts.first_name"
+              @keyup="verifFirst"
+            />
           </fieldset>
-        </fieldset>
-        <br />
-        <button class="btn-primary" id="button" type="submit">Valider</button
-        >&nbsp;&nbsp;
-        <button class="btn-primary" type="cancel">Annuler</button>
-      </form>
+          <br />
+          <fieldset>
+            <legend>Informations</legend>
+            <fieldset>
+              <legend>Date d'embauche :</legend>
+              <input
+                type="date"
+                name="hire_date"
+                id="hire_date"
+                v-model="posts.hire_date"
+              />
+            </fieldset>
+            <br />
+            <fieldset>
+              <legend>Restaurant</legend>
+              <select
+                name="restaurant_id"
+                id="restaurant_id"
+                v-model="posts.restaurant_id"
+              >
+                <option value="" disabled>{{ selected }}</option>
+                <option
+                  v-for="(restaurant, id_restaurant) in restaurants"
+                  v-bind:key="id_restaurant"
+                  :value="restaurant.id_restaurant"
+                >
+                  {{ restaurant.name }}
+                </option>
+              </select>
+            </fieldset>
+          </fieldset>
+          <br />
+          <button class="btn-primary" id="button" type="submit">Valider</button
+          >&nbsp;&nbsp;
+          <button class="btn-primary" type="cancel">Annuler</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -93,7 +95,6 @@ export default {
   },
   methods: {
     verifLast(e) {
-      document.getElementById("bulle").className = "alert alert-waring";
       let ln = document.getElementById("last_name").value;
       console.log(ln);
       if (
@@ -102,9 +103,12 @@ export default {
         )
       ) {
         document.getElementById("button").disabled = false;
+        document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
       } else {
+        document.getElementById("bulle").className = "alert alert-warning";
         document.getElementById("button").disabled = true;
+        document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le Nom doit contenir au minimum 3 lettres et que des lettres";
       }
@@ -120,9 +124,11 @@ export default {
         )
       ) {
         document.getElementById("button").disabled = false;
+        document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
       } else {
         document.getElementById("button").disabled = true;
+        document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le prénom doit contenir au minimum 3 lettres et que des lettres";
       }
@@ -157,14 +163,18 @@ export default {
 };
 </script>
 <style scoped>
-div {
-  background-color: bisque;
-  border: 1px;
-  border-radius: 5px;
-}
 input::placeholder {
   color: blue;
   font-style: italic;
   text-align: center;
+}
+.cadre {
+  color: black;
+  margin: 0px 200px;
+  padding: 20px;
+  width: "400px";
+  background-color: chocolate;
+  border: 2px solid bisque;
+  border-radius: 10px;
 }
 </style>

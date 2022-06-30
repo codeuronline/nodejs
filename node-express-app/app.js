@@ -13,7 +13,8 @@ var connection = mysql.createConnection({
     password: ""
 });
 function remplaceToBd(element) {
-    console.log("element")
+    
+    if(element.match("'")) console.log("TRAITEMENT => APOSTROPHE DETECTEE")
     return element.split("'").join("''");
 }
 //connect a la bd
@@ -95,12 +96,11 @@ app.use(express.json());
 
 // Chemin d'acces : POST /restaurant
 // Ajout d'un Restaurant 
-const postResto = app.post('/restaurant', (req, res) => {
-    
+const postResto = app.post('/restaurant', (req, res) => { 
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.name = remplaceToBd(req.body.name);
-    req.body.city= remplaceToBd(req.body.city)
+    req.body.city = remplaceToBd(req.body.city)
     // on verifie que le choix pour parking et terrasse n 'a pas renvoye null
     req.body.terrasse =(req.body.terrasse == null) ? "non" :req.body.terrasse;
     req.body.parking = (req.body.parking == null) ? "non" : req.body.parking;        
@@ -114,7 +114,7 @@ const postResto = app.post('/restaurant', (req, res) => {
     connection.query(sql, function(err, results) {
         if (err) throw err;
         console.log("POST => RESTAURANT");
-       console.log("Restaurant ajouté");
+       console.log("TRAITEMENT => RESTAURANT AJOUTE");
    });
     res.status(200);
 });
@@ -145,7 +145,7 @@ app.post('/employe',(req,res)=>{
     connection.query(sql, function(err, results) {
         if (err) throw err;
         console.log("POST => EMPLOYE");
-        console.log("Employé ajouté");
+        console.log("TRAITEMENT => EMPLOYE AJOUTE");
     });
     res.status(200);
 });
@@ -169,7 +169,7 @@ app.post('/restaurants/:idResto/employe',(req,res)=>{
     connection.query(sql, function(err, results) {
         if (err) throw err;
         console.log("POST => EMPLOYE de RESTAURANT");
-        console.log("Employe ajouté pour le restaurant : "+idResto);
+        console.log("TRAITEMENT => EMPLOYE AJOUTE POUR LE RESTAURANT : "+idResto);
     });
     res.status(200);
 });

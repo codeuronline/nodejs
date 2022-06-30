@@ -151,56 +151,6 @@ export default {
     this.update();
   },
 };
-// let app = new Vue({
-//             el: "#app",
-//             data: {
-//                 resto: [{"name":"Resto1", "id_restaurant":"1","nbCouverts":"false"}, {"name": "Resto 2","id_restaurant":"2","nbCouverts":"false"},{"name":"Resto 3","id_restaurant":"3","nbCouverts":"false"}],
-//                 team: [{"id_employe":"id de l'employe","first_name":"ici le prénom"}, {"last_name":"ici le nom"}],
-//             },
-//             methods:{
-//                 update() {
-//                     axios.get("http://127.0.0.1:5000/restaurants")
-//                     .then(res=>this.resto=res.data)
-//                     // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
-//                     console.log(this.resto)
-//                     axios.get("http://127.0.0.1:5000/employes")
-//                     .then(res=>this.team=res.data)
-//                     // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
-//                         console.log(this.team)
-
-//                 },
-//                 delRestaurant(event,id){
-//                     console.log('delRestaurant (id) =>',id)
-//                     axios.delete("http://127.0.0.1:5000/restaurants/"+id)
-//                     .then(status)
-//                     // .catch(error => this.posts=[{"name":"erreur de suppression"}])
-//                     // console.log(status)
-//                     axios.get("http://127.0.0.1:5000/restaurants")
-//                     .then(res=>this.resto=res.data)
-//                     // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
-//                     console.log(this.resto)
-//                     axios.get("http://127.0.0.1:5000/employes")
-//                     .then(res=>this.team=res.data)
-//                     // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
-//                         console.log(this.team)
-//                 },
-//                 delPersonnel(event,id){
-//                     console.log('delPersonnel (id) =>',id)
-//                     axios.delete("http://127.0.0.1:5000/employes/"+id)
-//                     .then(status)
-//                     // .catch(error => this.posts=[{"name":"erreur de suppression"}])
-//                     axios.get("http://127.0.0.1:5000/restaurants")
-//                     .then(res=>this.resto=res.data)
-//                     // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
-//                     console.log(this.resto)
-//                     axios.get("http://127.0.0.1:5000/employes")
-//                     .then(res=>this.team=res.data)
-//                     // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
-//                         console.log(this.team)
-
-//                 },
-//             },
-//         });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
