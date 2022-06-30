@@ -50,7 +50,7 @@
                 id="restaurant_id"
                 v-model="posts.restaurant_id"
               >
-                <option value="" disabled>{{ selected }}</option>
+                <option value="0" disabled>{{ selected }}</option>
                 <option
                   v-for="(restaurant, id_restaurant) in restaurants"
                   v-bind:key="id_restaurant"
@@ -86,7 +86,7 @@ export default {
       restaurants: {
         name: "",
         city: null,
-        id_restaurant: "",
+        id_restaurant: "0",
         // nbCouverts: null,
         // parking: null,
         // terrasse: null,
@@ -97,6 +97,9 @@ export default {
     verifLast(e) {
       let ln = document.getElementById("last_name").value;
       console.log(ln);
+      if (ln) {
+        document.getElementById("bulle").style.visibility = "hidden";
+      }
       if (
         ln.match(
           /^[a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z][a-zéèàùûêâôë/-/ /'A-Z]+$/
@@ -115,6 +118,9 @@ export default {
       e.preventDefault();
     },
     verifFirst(e) {
+      if (fn) {
+        document.getElementById("bulle").style.visibility = "hidden";
+      }
       document.getElementById("bulle").className = "alert alert-warning";
       let fn = document.getElementById("first_name").value;
       console.log(fn);
@@ -171,7 +177,7 @@ input::placeholder {
 .cadre {
   color: black;
   margin: 0px 200px;
-  padding: 20px;
+  padding: 50px;
   width: "400px";
   background-color: chocolate;
   border: 2px solid bisque;

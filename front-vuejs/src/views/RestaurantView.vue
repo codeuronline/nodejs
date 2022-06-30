@@ -122,8 +122,11 @@ export default {
       e.preventDefault();
     },
     verifName(e) {
-      document.getElementById("bulle").className = "alert alert-waring";
+      document.getElementById("bulle").className = "alert alert-warning";
       let rn = document.getElementById("name").value;
+      if (rn == "" || rn == null) {
+        document.getElementById("bulle").style.visibility = "hidden";
+      }
       console.log(rn);
       if (rn.match(/^[a-zéèàùûêâôë/-/ /'A-Z0-9][a-zéèàùûêâôë/-/ /'A-Z]+$/)) {
         document.getElementById("button").disabled = false;
