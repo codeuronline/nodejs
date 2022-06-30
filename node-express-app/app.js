@@ -13,8 +13,8 @@ var connection = mysql.createConnection({
     password: ""
 });
 
-function remplaceFromBD(element)
-return element.split("").join("");
+// function remplaceFromBD(element)
+// return element.split("").join("");
 //connect a la bd
 connection.connect(function (err) {
     if (err) throw err;
