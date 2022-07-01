@@ -171,7 +171,6 @@ export default {
         .then((result) => {
           console.console.log(result);
         });
-      e.preventDefault();
       document.getElementById("bulle").className = "alert alert-success";
       document.getElementById("information").innerHTML = "Restaurant Ajouté";
       document.querySelector("button").disabled = true;
@@ -180,6 +179,7 @@ export default {
         document.getElementById("bulle").className = "";
         document.querySelector("button").disabled = false;
       }, 3000);
+      e.preventDefault();
     },
   },
 };
@@ -192,7 +192,7 @@ input::placeholder {
 }
 .cadre {
   color: black;
-  margin: 0px 200px;
+  margin: 0px 500px;
   padding: 20px;
   width: "400px";
   background-color: cornflowerblue;

@@ -50,10 +50,10 @@
                 id="restaurant_id"
                 v-model="posts.restaurant_id"
               >
-                <option vbind:value="selected" disabled>{{ selected }}</option>
+                <option :value="selected" disabled>{{ selected }}</option>
                 <option
                   v-for="(restaurant, id_restaurant) in restaurants"
-                  v-bind:key="id_restaurant"
+                  :key="id_restaurant"
                   :value="restaurant.id_restaurant"
                 >
                   {{ restaurant.name }}
@@ -62,8 +62,7 @@
             </fieldset>
           </fieldset>
           <br />
-          <button class="btn-primary" id="button" type="submit">Valider</button
-          >&nbsp;&nbsp;
+          <button class="btn-primary" id="button">Valider</button>&nbsp;&nbsp;
           <button class="btn-primary" type="cancel">Annuler</button>
         </form>
       </div>
@@ -80,13 +79,13 @@ export default {
       posts: {
         first_name: null,
         last_name: null,
-        hire_date: new Date(),
+        hire_date: null,
         restaurant_id: null,
       },
       restaurants: {
-        name: "",
+        name: null,
         city: null,
-        id_restaurant: "0",
+        id_restaurant: 0,
         // nbCouverts: null,
         // parking: null,
         // terrasse: null,
@@ -97,7 +96,7 @@ export default {
     verifLast(e) {
       let ln = document.getElementById("last_name").value;
       console.log(ln);
-      if (ln) {
+      if (!ln) {
         document.getElementById("bulle").style.visibility = "hidden";
       }
       if (
@@ -118,11 +117,11 @@ export default {
       e.preventDefault();
     },
     verifFirst(e) {
-      if (fn) {
+      let fn = document.getElementById("first_name").value;
+      if (!fn) {
         document.getElementById("bulle").style.visibility = "hidden";
       }
       document.getElementById("bulle").className = "alert alert-warning";
-      let fn = document.getElementById("first_name").value;
       console.log(fn);
       if (
         fn.match(
@@ -141,11 +140,9 @@ export default {
       e.preventDefault();
     },
     postData(e) {
-      axios
-        .post("http://127.0.0.1:5000/employe/", this.posts)
-        .then((result) => {
-          console.console.log(result);
-        });
+      axios.post("http://127.0.0.1:5000/employe", this.posts).then((result) => {
+        console.console.log(result);
+      });
       document.getElementById("bulle").className = "alert alert-success";
       document.getElementById("information").innerHTML = "Employé Ajouté";
       document.querySelector("button").disabled = true;
@@ -176,7 +173,7 @@ input::placeholder {
 }
 .cadre {
   color: black;
-  margin: 0px 200px;
+  margin: 0px 500px;
   padding: 50px;
   width: "400px";
   background-color: chocolate;

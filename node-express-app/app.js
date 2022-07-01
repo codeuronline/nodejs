@@ -14,15 +14,18 @@ var connection = mysql.createConnection({
 });
 function remplaceToBd(element) {
     
-    if(element.match("'")) console.log("TRAITEMENT => APOSTROPHE DETECTEE")
-    return element.split("'").join("''");
+    if (element.match("'")){
+        console.log("TRAITEMENT => APOSTROPHE DETECTEE")
+        element.split("'").join("''");
+    }
+    return element;
 }
 //connect a la bd
 connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
 
-})
+});
 
 
 // console.log('Get connection ...');
@@ -96,7 +99,7 @@ app.use(express.json());
 
 // Chemin d'acces : POST /restaurant
 // Ajout d'un Restaurant 
-const postResto = app.post('/restaurant', (req, res) => { 
+app.post('/restaurant', (req, res) => { 
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.name = remplaceToBd(req.body.name);
@@ -118,13 +121,20 @@ const postResto = app.post('/restaurant', (req, res) => {
    });
     res.status(200);
 });
+
+
+// nouvelle route test
+
+
 // Chemin d'acces : POST /employe
 // Ajout d'un employe dans un Restaurant idResto
-app.post('/employe',(req,res)=>{
+
+app.post('/employe', (req, res) => {
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.first_name = remplaceToBd(req.body.first_name);
     req.body.last_name = remplaceToBd(req.body.last_name);
+    //req.body.hire_date = remplaceDateFormat(req.body.hire_date);
     // const maintenant = new Date();
     // dateFormat(maintenant, "yyyy-mm-dd")
     // req.body.hire_date = (req.body.hire_date == null) ? new Date() : req.body.hire_date;

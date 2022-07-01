@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="cadre">
     <span id="information"></span>
     <table class="table table-bordered" width="1600px">
       <thead>
@@ -13,14 +13,14 @@
       </thead>
       <tbody v-for="(restaurant, index) in restaurants" v-bind:key="index">
         <tr>
-          <td width="800px">
+          <td>
             <div width="100%">
-              <h3>{{ restaurant.name }}</h3>
+              <h2>{{ restaurant.name }}</h2>
             </div>
           </td>
           <td width="90%">
             <!-- <div height="100%"> -->
-            <h4 v-if="restaurant.nbCouverts != 'false'">
+            <h2 v-if="restaurant.nbCouverts != 'false'">
               {{ restaurant.city }}&nbsp;&nbsp;
               {{ restaurant.nbCouverts }} couverts
               <img
@@ -44,7 +44,7 @@
                 height="50px"
                 src="../assets//noterrasse.jpg"
               />
-            </h4>
+            </h2>
             <!-- </div> -->
           </td>
           <td width="10%">
@@ -56,7 +56,7 @@
           </td>
         </tr>
         <tr>
-          <td width="800px">
+          <td>
             <div width="100%">
               <h3>EQUIPE</h3>
             </div>
@@ -67,11 +67,13 @@
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h2>
-                <p v-if="restaurant.id_restaurant === employe.restaurant_id">
-                  {{ employe.first_name }} {{ employe.last_name }}
-                </p>
-              </h2>
+              <h3>
+                {{
+                  restaurant.id_restaurant == employe.restaurant_id
+                    ? employe.first_name + employe.last_name
+                    : null
+                }}
+              </h3>
             </div>
           </td>
           <td width="10%">
@@ -80,7 +82,7 @@
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h2>
+              <h3>
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
                     <img
@@ -90,13 +92,13 @@
                     />
                   </button>
                 </p>
-              </h2>
+              </h3>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <button v-on:click="update()">Mettre à jour</button>
+    <button @click="update()">Mettre à jour</button>
   </div>
 </template>
 <script>
@@ -110,12 +112,6 @@ export default {
     };
   },
   methods: {
-    // convertFromBd(elements) {
-    //   for (const element of elements) {
-    //     element.value.split("&apos;").join("\'");
-    //   }
-    //   return elements;
-    // },
     update() {
       axios
         .get("http://127.0.0.1:5000/restaurants")
@@ -152,9 +148,11 @@ export default {
   },
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.cadre {
+  margin: 0 400px;
+}
 h3 {
   margin: 40px 0 0;
 }
