@@ -50,7 +50,7 @@
                 id="restaurant_id"
                 v-model="posts.restaurant_id"
               >
-                <option value="0" disabled>{{ selected }}</option>
+                <option vbind:value="selected" disabled>{{ selected }}</option>
                 <option
                   v-for="(restaurant, id_restaurant) in restaurants"
                   v-bind:key="id_restaurant"
