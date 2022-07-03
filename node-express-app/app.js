@@ -1,5 +1,4 @@
 const express = require('express');
-//const route = require('app');
 let mysql = require('mysql');
 const cors = require('cors');
 const app = express();
@@ -13,7 +12,6 @@ var connection = mysql.createConnection({
     password: ""
 });
 function remplaceToBd(element) {
-    console.log("hello");
     if (element.match("'")){
         console.log("TRAITEMENT => APOSTROPHE DETECTEE")
         element = element.split("'").join("''");
@@ -24,9 +22,7 @@ function remplaceToBd(element) {
 connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
-
 });
-
 
 // console.log('Get connection ...');
 app.listen(5000, () => {
@@ -36,13 +32,9 @@ app.listen(5000, () => {
 
 
 
-//creation des tables
-//  connection.connect(function (err) {
-//      if (err) throw err;
-//      console.log("Connected!");
 
-    // Création de la table restaurants
-    // Drop EMPLOYEES table if Exists!!
+// Création de la table restaurants
+// Drop EMPLOYEES table if Exists!!
 //     var sql1 = "DROP TABLE IF EXISTS Restaurants ";
 //     connection.query(sql1, function (err, results) {
 //         if (err) throw err;
@@ -121,9 +113,6 @@ app.post('/restaurant', (req, res) => {
    });
     res.status(200);
 });
-
-
-// nouvelle route test
 
 
 // Chemin d'acces : POST /employe
@@ -406,8 +395,8 @@ app.delete('/employes/:id', (req, res) => {
 
 
 //  app.listen(5050, () => {
-     //console.log('Server is listening @5000');
-  //});
+//console.log('Server is listening @5000');
+//});
 //  app.get('/hello', function (request, response) {
 //      app.postResto;
 //      monmodule.direBye();
