@@ -41,7 +41,8 @@
               placeholder="Nombre de couverts"
               value=""
               v-model="posts.nbCouverts"
-              @keyup="verifNbCouverts"
+              @keypressed="verifNbCouverts"
+              @onchange="verifNbCouverts"
             />
             <br />
             <fieldset>
@@ -97,6 +98,9 @@ export default {
   name: "PostComponentRestaurant",
   data() {
     return {
+      okName: false,
+      okCity: false,
+      okNbCouverts: false,
       posts: {
         name: null,
         city: null,
@@ -113,6 +117,7 @@ export default {
       if (nbc > 1) {
         document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML = "";
+        this.okNbCouverts = true;
       } else {
         document.getElementById("bulle").className = "alert alert-waring";
         document.getElementById("button").disabled = false;
@@ -132,11 +137,13 @@ export default {
         document.getElementById("button").disabled = true;
         document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
+        this.okName = true;
       } else {
         document.getElementById("button").disabled = false;
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "Le Nom de restaurant doit contenir<br> que des caractères autorisés<br> ET au moins 2 caractères";
+        this.okName = false;
       }
       e.preventDefault();
     },
@@ -155,29 +162,42 @@ export default {
         document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML = "";
         document.getElementById("bulle").style.visibility = "hidden";
+        this.okCity = true;
       } else {
         document.getElementById("button").disabled = true;
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "la Ville doit contenir au minimum 3 lettres et que des lettres";
+        this.okCity = false;
       }
       e.preventDefault();
     },
     postData(e) {
-      axios
-        .post("http://127.0.0.1:5000/restaurant", this.posts)
-        .then((result) => {
-          console.console.log(result);
-        });
-      document.getElementById("bulle").className = "alert alert-success";
-      document.getElementById("bulle").style.visibility = "visible";
-      document.getElementById("information").innerHTML = "Restaurant Ajouté";
-      document.querySelector("button").disabled = true;
-      setTimeout(function () {
-        document.getElementById("information").innerHTML = "";
-        document.getElementById("bulle").className = "";
-        document.querySelector("button").disabled = false;
-      }, 3000);
+      if (
+        this.okCity == true &&
+        this.okName == true &&
+        this.okNbCouverts == true
+      ) {
+        axios
+          .post("http://127.0.0.1:5000/restaurant", this.posts)
+          .then((result) => {
+            console.console.log(result);
+          });
+        document.getElementById("bulle").className = "alert alert-success";
+        document.getElementById("bulle").style.visibility = "visible";
+        document.getElementById("information").innerHTML = "Restaurant Ajouté";
+        document.querySelector("button").disabled = true;
+        setTimeout(function () {
+          document.getElementById("information").innerHTML = "";
+          document.getElementById("bulle").className = "";
+          document.querySelector("button").disabled = false;
+        }, 3000);
+      } else {
+        document.getElementById("bulle").className = "alert alert-warning";
+        document.getElementById("bulle").style.visibility = "visible";
+        document.getElementById("information").innerHTML =
+          "Problème avec un champ";
+      }
       e.preventDefault();
     },
   },

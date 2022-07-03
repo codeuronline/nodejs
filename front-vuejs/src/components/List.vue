@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="cadre">
     <span id="information"></span>
-    <table class="table table-bordered" width="1600px">
+    <table class="table table-bordered">
       <thead>
         <tr class="table table-dark">
           <th scope="col">Nom</th>
