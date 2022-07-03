@@ -24,25 +24,21 @@
               {{ restaurant.city }}&nbsp;&nbsp;
               {{ restaurant.nbCouverts }} couverts
               <img
-                width="50px"
-                height="50px"
+                class="box"
                 v-if="restaurant.parking === 'oui'"
                 src="../assets/parking.jpg"
               /><img
-                width="50px"
-                height="50px"
+                class="box"
                 v-if="restaurant.parking === 'non'"
                 src="../assets/noparking.webp"
               /><img
-                width="75px"
-                height="50px"
+                class="box"
                 v-if="restaurant.terrasse === 'oui'"
                 src="../assets/terrasse.png"
               /><img
                 v-if="restaurant.terrasse === 'non'"
-                width="50px"
-                height="50px"
-                src="../assets//noterrasse.jpg"
+                class="box"
+                src="../assets/noterrasse.jpg"
               />
             </h2>
             <!-- </div> -->
@@ -51,7 +47,7 @@
             <button
               v-on:click="delRestaurant($event, restaurant.id_restaurant)"
             >
-              <img width="40px" src="../assets/delete.webp" alt="supprimer" />
+              <img class="boxD" src="../assets/delete.png" alt="supprimer" />
             </button>
           </td>
         </tr>
@@ -70,7 +66,7 @@
               <h3>
                 {{
                   restaurant.id_restaurant == employe.restaurant_id
-                    ? employe.first_name + employe.last_name
+                    ? employe.first_name + " " + employe.last_name
                     : null
                 }}
               </h3>
@@ -78,7 +74,7 @@
           </td>
           <td width="10%">
             <div
-              width="100%"
+              class="box"
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
@@ -86,8 +82,8 @@
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
                     <img
-                      width="40px"
-                      src="../assets/delete.webp"
+                      class="boxD"
+                      src="../assets/delete.png"
                       alt="supprimer"
                     />
                   </button>
@@ -150,6 +146,14 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.boxD {
+  width: 30px;
+  height: 30px;
+}
+.box {
+  width: 40px;
+  height: 40px;
+}
 .cadre {
   margin: 0 400px;
 }

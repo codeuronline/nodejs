@@ -163,9 +163,6 @@ export default {
       e.preventDefault();
     },
     postData(e) {
-      this.verifCity;
-      this.verifName;
-      this.verifNbCouverts;
       axios
         .post("http://127.0.0.1:5000/restaurant", this.posts)
         .then((result) => {
