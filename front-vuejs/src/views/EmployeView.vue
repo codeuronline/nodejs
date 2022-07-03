@@ -141,33 +141,19 @@ export default {
       e.preventDefault();
     },
     postData(e) {
-      if (this.verifFirst && this.verifLast) {
-        document.getElementById("bulle").className = "alert alert-success";
-        document.getElementById("information").innerHTML = "Employé Ajouté";
-        document.querySelector("button").disabled = true;
-        axios
-          .post("http://127.0.0.1:5000/employe", this.posts)
-          .then((result) => {
-            console.console.log(result);
-          });
-
-        setTimeout(function () {
-          document.getElementById("information").innerHTML = "";
-          document.getElementById("bulle").className = "";
-          document.querySelector("button").disabled = false;
-        }, 3000);
-        e.preventDefault();
-      } else {
-        document.getElementById("bulle").className = "alert alert-warning";
-        document.getElementById("information").innerHTML = "Problème";
-        document.querySelector("button").disabled = true;
-        setTimeout(function () {
-          document.getElementById("information").innerHTML = "";
-          document.getElementById("bulle").className = "";
-          document.querySelector("button").disabled = false;
-        }, 3000);
-        e.preventDefault();
-      }
+      axios.post("http://127.0.0.1:5000/employe", this.posts).then((result) => {
+        console.console.log(result);
+      });
+      document.getElementById("bulle").className = "alert alert-success";
+      document.getElementById("bulle").style.visibility = "visible";
+      document.getElementById("information").innerHTML = "Restaurant Ajouté";
+      document.querySelector("button").disabled = true;
+      setTimeout(function () {
+        document.getElementById("information").innerHTML = "";
+        document.getElementById("bulle").className = "";
+        document.querySelector("button").disabled = false;
+      }, 3000);
+      e.preventDefault();
     },
   },
   async mounted() {

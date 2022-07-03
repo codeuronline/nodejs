@@ -108,14 +108,14 @@ export default {
   },
   methods: {
     verifNbCouverts(e) {
-      document.getElementById("bulle").className = "alert alert-waring";
       let nbc = document.getElementById("nbCouverts").value;
       console.log(nbc);
-      if (nbc <= 1) {
-        document.getElementById("button").disabled = false;
+      if (nbc > 1) {
+        document.getElementById("button").disabled = true;
         document.getElementById("information").innerHTML = "";
       } else {
-        document.getElementById("button").disabled = true;
+        document.getElementById("bulle").className = "alert alert-waring";
+        document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML =
           "le nombre indiqué doit être positif";
       }
@@ -129,12 +129,12 @@ export default {
       }
       console.log(rn);
       if (rn.match(/^[a-zéèàùûêâôë/-/ /'A-Z0-9][a-zéèàùûêâôë/-/ /'A-Z]+$/)) {
-        document.getElementById("button").disabled = false;
+        document.getElementById("button").disabled = true;
         document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
       } else {
-        document.getElementById("button").disabled = true;
-
+        document.getElementById("button").disabled = false;
+        document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "Le Nom de restaurant doit contenir<br> que des caractères autorisés<br> ET au moins 2 caractères";
       }
@@ -157,6 +157,7 @@ export default {
         document.getElementById("bulle").style.visibility = "hidden";
       } else {
         document.getElementById("button").disabled = true;
+        document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "la Ville doit contenir au minimum 3 lettres et que des lettres";
       }
@@ -169,6 +170,7 @@ export default {
           console.console.log(result);
         });
       document.getElementById("bulle").className = "alert alert-success";
+      document.getElementById("bulle").style.visibility = "visible";
       document.getElementById("information").innerHTML = "Restaurant Ajouté";
       document.querySelector("button").disabled = true;
       setTimeout(function () {

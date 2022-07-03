@@ -64,6 +64,7 @@
               v-bind:key="index2"
             >
               <h4>
+                <!-- <i v-if="employe.first_name" class="bi bi-person"></i> -->
                 {{
                   restaurant.id_restaurant == employe.restaurant_id
                     ? employe.first_name + " " + employe.last_name

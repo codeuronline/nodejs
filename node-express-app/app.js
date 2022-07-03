@@ -13,10 +13,10 @@ var connection = mysql.createConnection({
     password: ""
 });
 function remplaceToBd(element) {
-    
+    console.log("hello");
     if (element.match("'")){
         console.log("TRAITEMENT => APOSTROPHE DETECTEE")
-        element.split("'").join("''");
+        element = element.split("'").join("''");
     }
     return element;
 }
@@ -103,7 +103,7 @@ app.post('/restaurant', (req, res) => {
     // requete
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.name = remplaceToBd(req.body.name);
-    req.body.city = remplaceToBd(req.body.city)
+    req.body.city = remplaceToBd(req.body.city);
     // on verifie que le choix pour parking et terrasse n 'a pas renvoye null
     req.body.terrasse =(req.body.terrasse == null) ? "non" :req.body.terrasse;
     req.body.parking = (req.body.parking == null) ? "non" : req.body.parking;        
@@ -134,14 +134,6 @@ app.post('/employe', (req, res) => {
     // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.first_name = remplaceToBd(req.body.first_name);
     req.body.last_name = remplaceToBd(req.body.last_name);
-    //req.body.hire_date = remplaceDateFormat(req.body.hire_date);
-    // const maintenant = new Date();
-    // dateFormat(maintenant, "yyyy-mm-dd")
-    // req.body.hire_date = (req.body.hire_date == null) ? new Date() : req.body.hire_date;
-    // console.log(req.body.hire_date);
-    // seulement pour test avec un id
-    //req.body.restaurant_id =1
-    //req.body.restaurant_id = ((req.body.restaurant_id == null) || (req.body.restaurant_id == "restaurant.restaurant_id")) ? 1 : req.body.restaurant_id;
     let sql_insert= "INSERT INTO ?? (first_name,last_name,hire_date,restaurant_id)" +
        " VALUES('"  + req.body.first_name+ "','"
                     + req.body.last_name + "', '"
