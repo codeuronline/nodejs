@@ -47,14 +47,14 @@
             <button
               v-on:click="delRestaurant($event, restaurant.id_restaurant)"
             >
-              <img class="boxD" src="../assets/delete.png" alt="supprimer" />
+              <i class="bi bi-x-lg"></i>
             </button>
           </td>
         </tr>
         <tr>
           <td>
             <div width="100%">
-              <h3>EQUIPE</h3>
+              <h4>EQUIPE</h4>
             </div>
           </td>
           <td width="90%">
@@ -63,13 +63,13 @@
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h3>
+              <h4>
                 {{
                   restaurant.id_restaurant == employe.restaurant_id
                     ? employe.first_name + " " + employe.last_name
                     : null
                 }}
-              </h3>
+              </h4>
             </div>
           </td>
           <td width="10%">
@@ -78,17 +78,13 @@
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h3>
+              <h4>
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
-                    <img
-                      class="boxD"
-                      src="../assets/delete.png"
-                      alt="supprimer"
-                    />
+                    <i class="bi bi-x-lg"></i>
                   </button>
                 </p>
-              </h3>
+              </h4>
             </div>
           </td>
         </tr>
