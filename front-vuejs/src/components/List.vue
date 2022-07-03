@@ -26,19 +26,19 @@
               <img
                 class="box"
                 v-if="restaurant.parking === 'oui'"
-                src="../assets/parking.jpg"
+                src="../assets/parking.png"
               /><img
                 class="box"
                 v-if="restaurant.parking === 'non'"
-                src="../assets/noparking.webp"
+                src="../assets/noparking.png"
               /><img
                 class="box"
                 v-if="restaurant.terrasse === 'oui'"
                 src="../assets/terrasse.png"
               /><img
                 v-if="restaurant.terrasse === 'non'"
-                class="box"
-                src="../assets/noterrasse.jpg"
+                class="boxD"
+                src="../assets/noterrasse.png"
               />
             </h2>
             <!-- </div> -->
