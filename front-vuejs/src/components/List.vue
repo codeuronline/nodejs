@@ -86,8 +86,8 @@
                 <p v-if="restaurant.id_restaurant === employe.restaurant_id">
                   <button v-on:click="delPersonnel($event, employe.id_employe)">
                     <img
-                      width="40px"
-                      src="../assets/delete.webp"
+                      class="box"
+                      src="../assets/delete.png"
                       alt="supprimer"
                     />
                   </button>
@@ -150,6 +150,10 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.box {
+  width: 30px;
+  height: 30px;
+}
 .cadre {
   margin: 0 400px;
 }
