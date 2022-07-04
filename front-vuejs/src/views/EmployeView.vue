@@ -146,7 +146,7 @@ export default {
       });
       document.getElementById("bulle").className = "alert alert-success";
       document.getElementById("bulle").style.visibility = "visible";
-      document.getElementById("information").innerHTML = "Restaurant Ajouté";
+      document.getElementById("information").innerHTML = "Employé Ajouté";
       document.querySelector("button").disabled = true;
       setTimeout(function () {
         document.getElementById("information").innerHTML = "";

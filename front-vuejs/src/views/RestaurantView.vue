@@ -39,10 +39,11 @@
               id="nbCouverts"
               name="nbCouverts"
               placeholder="Nombre de couverts"
-              value=""
+              min="1"
+              value="1"
               v-model="posts.nbCouverts"
-              @keyup="verifNbCouverts"
               @onchange="verifNbCouverts"
+              @keyup="verifNbCouverts"
             />
             <br />
             <fieldset>
@@ -86,7 +87,7 @@
           <br />
           <button id="button" class="btn-primary" type="submit">Insérer</button
           >&nbsp;&nbsp;
-          <button class="btn-primary" type="cancel">Annuler</button>
+          <button class="btn-primary" type="reset">Annuler</button>
         </form>
       </div>
     </div>
@@ -114,15 +115,18 @@ export default {
     verifNbCouverts(e) {
       let nbc = document.getElementById("nbCouverts").value;
       console.log(nbc);
-      if (nbc > 1) {
-        document.getElementById("button").disabled = true;
+      if (parseInt(nbc) > 1) {
+        //document.getElementById("button").disabled = true;
+        document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
         this.okNbCouverts = true;
       } else {
         document.getElementById("bulle").className = "alert alert-waring";
-        document.getElementById("button").disabled = false;
+        document.getElementById("bulle").style.visibility = "visible";
+        //document.getElementById("button").disabled = false;
         document.getElementById("information").innerHTML =
           "le nombre indiqué doit être positif";
+        this.okNbCouverts = false;
       }
       e.preventDefault();
     },
@@ -134,12 +138,12 @@ export default {
       }
       console.log(rn);
       if (rn.match(/^[a-zéèàùûêâôë/-/ /'A-Z0-9][a-zéèàùûêâôë/-/ /'A-Z]+$/)) {
-        document.getElementById("button").disabled = true;
+        // document.getElementById("button").disabled = true;
         document.getElementById("bulle").style.visibility = "hidden";
         document.getElementById("information").innerHTML = "";
         this.okName = true;
       } else {
-        document.getElementById("button").disabled = false;
+        // document.getElementById("button").disabled = false;
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "Le Nom de restaurant doit contenir<br> que des caractères autorisés<br> ET au moins 2 caractères";
@@ -173,7 +177,12 @@ export default {
       e.preventDefault();
     },
     postData(e) {
-      if (this.okCity == true && this.okName == true && this.okNbCouverts) {
+      console.log(this.okCity + " " + this.okName + " " + this.okNbCouverts);
+      if (
+        this.okCity == true &&
+        this.okName == true &&
+        this.okNbCouverts == true
+      ) {
         axios
           .post("http://127.0.0.1:5000/restaurant", this.posts)
           .then((result) => {
@@ -182,7 +191,7 @@ export default {
         document.getElementById("bulle").className = "alert alert-success";
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML = "Restaurant Ajouté";
-        document.querySelector("button").disabled = true;
+        //document.querySelector("button").disabled = true;
         setTimeout(function () {
           document.getElementById("information").innerHTML = "";
           document.getElementById("bulle").className = "";
@@ -193,6 +202,8 @@ export default {
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "Problème avec un champ";
+        document.getElementById("information").innerHTML =
+          this.okCity + " " + this.okName + " " + this.verifNbCouverts;
       }
       e.preventDefault();
     },

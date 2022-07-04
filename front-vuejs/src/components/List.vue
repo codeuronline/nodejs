@@ -24,24 +24,20 @@
               {{ restaurant.city }}&nbsp;&nbsp;
               {{ restaurant.nbCouverts }} couverts
               <img
-                width="50px"
-                height="50px"
+                class="box"
                 v-if="restaurant.parking === 'oui'"
                 src="../assets/parking.png"
               /><img
-                width="50px"
-                height="50px"
+                class="box"
                 v-if="restaurant.parking === 'non'"
                 src="../assets/noparking.png"
               /><img
-                width="75px"
-                height="50px"
+                class="box"
                 v-if="restaurant.terrasse === 'oui'"
                 src="../assets/terrasse.png"
               /><img
                 v-if="restaurant.terrasse === 'non'"
-                width="50px"
-                height="50px"
+                class="box"
                 src="../assets/noterrasse.png"
               />
             </h2>
@@ -51,48 +47,47 @@
             <button
               v-on:click="delRestaurant($event, restaurant.id_restaurant)"
             >
-              <img width="40px" src="../assets/delete.png" alt="supprimer" />
+              <i class="bi bi-trash"></i>
             </button>
           </td>
         </tr>
         <tr>
-          <td>
-            <div width="100%">
+          <td scope="col" valign="middle">
+            <div>
               <h3>EQUIPE</h3>
             </div>
           </td>
-          <td width="90%">
+          <td scope="col" width="90%">
             <div
               width="100%"
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h3>
-                {{
-                  restaurant.id_restaurant == employe.restaurant_id
-                    ? employe.first_name + employe.last_name
-                    : null
-                }}
-              </h3>
+              <!-- <h4> -->
+              {{
+                restaurant.id_restaurant == employe.restaurant_id
+                  ? employe.first_name + employe.last_name
+                  : null
+              }}
+              <!-- </h4> -->
             </div>
           </td>
-          <td width="10%">
+          <td scope="col" width="10%">
             <div
               width="100%"
               v-for="(employe, index2) in team"
               v-bind:key="index2"
             >
-              <h3>
-                <p v-if="restaurant.id_restaurant === employe.restaurant_id">
-                  <button v-on:click="delPersonnel($event, employe.id_employe)">
-                    <img
-                      class="box"
-                      src="../assets/delete.png"
-                      alt="supprimer"
-                    />
-                  </button>
-                </p>
-              </h3>
+              <!-- <h4> -->
+              <p v-if="restaurant.id_restaurant === employe.restaurant_id">
+                <button>
+                  <i
+                    class="bi bi-trash"
+                    v-on:click="delPersonnel($event, employe.id_employe)"
+                  ></i>
+                </button>
+              </p>
+              <!-- </h4> -->
             </div>
           </td>
         </tr>
@@ -150,6 +145,12 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+i :hover {
+  cursor: pointer;
+}
+.boxS {
+  width: 20px;
+}
 .box {
   width: 30px;
   height: 30px;
