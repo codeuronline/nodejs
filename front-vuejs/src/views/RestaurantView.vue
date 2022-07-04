@@ -41,7 +41,7 @@
               placeholder="Nombre de couverts"
               value=""
               v-model="posts.nbCouverts"
-              @keypressed="verifNbCouverts"
+              @keyup="verifNbCouverts"
               @onchange="verifNbCouverts"
             />
             <br />
@@ -173,11 +173,7 @@ export default {
       e.preventDefault();
     },
     postData(e) {
-      if (
-        this.okCity == true &&
-        this.okName == true &&
-        this.okNbCouverts == true
-      ) {
+      if (this.okCity == true && this.okName == true && this.okNbCouverts) {
         axios
           .post("http://127.0.0.1:5000/restaurant", this.posts)
           .then((result) => {

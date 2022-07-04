@@ -91,7 +91,6 @@
         </tr>
       </tbody>
     </table>
-    <button @click="update()">Mettre à jour</button>
   </div>
 </template>
 <script>
