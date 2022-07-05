@@ -76,6 +76,7 @@ export default {
   name: "PostComponentEmploye",
   data() {
     return {
+      errors: [],
       selected: "Sélectionner le restaurant",
       posts: {
         first_name: null,
@@ -148,6 +149,7 @@ export default {
       document.getElementById("bulle").style.visibility = "visible";
       document.getElementById("information").innerHTML = "Employé Ajouté";
       document.querySelector("button").disabled = true;
+      this.data = [];
       setTimeout(function () {
         document.getElementById("information").innerHTML = "";
         document.getElementById("bulle").className = "";
