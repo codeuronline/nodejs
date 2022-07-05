@@ -115,6 +115,9 @@ export default {
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le Nom doit contenir au minimum 3 lettres et que des lettres";
+        this.errors.push(
+          "le Nom doit contenir au minimum 3 lettres et que des lettres"
+        );
       }
       e.preventDefault();
     },
@@ -138,6 +141,9 @@ export default {
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le prénom doit contenir au minimum 3 lettres et que des lettres";
+        this.errors.push(
+          "le prénom doit contenir au minimum 3 lettres et que des lettres"
+        );
       }
       e.preventDefault();
     },
