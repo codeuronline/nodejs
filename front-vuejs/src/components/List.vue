@@ -66,7 +66,7 @@
               <!-- <h4> -->
               {{
                 restaurant.id_restaurant == employe.restaurant_id
-                  ? employe.first_name + employe.last_name
+                  ? employe.first_name + " " + employe.last_name
                   : null
               }}
               <!-- </h4> -->
