@@ -64,7 +64,7 @@
           </fieldset>
           <br />
           <button class="btn-primary" id="button">Valider</button>&nbsp;&nbsp;
-          <button class="btn-primary" type="cancel">Annuler</button>
+          <button class="btn-primary" type="reset">Annuler</button>
         </form>
       </div>
     </div>
