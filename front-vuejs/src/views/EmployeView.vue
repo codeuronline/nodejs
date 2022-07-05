@@ -76,6 +76,7 @@ export default {
   name: "PostComponentEmploye",
   data() {
     return {
+      errors: [],
       selected: "Sélectionner le restaurant",
       posts: {
         first_name: null,
@@ -114,6 +115,9 @@ export default {
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le Nom doit contenir au minimum 3 lettres et que des lettres";
+        this.errors.push(
+          "le Nom doit contenir au minimum 3 lettres et que des lettres"
+        );
       }
       e.preventDefault();
     },
@@ -137,6 +141,9 @@ export default {
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
           "le prénom doit contenir au minimum 3 lettres et que des lettres";
+        this.errors.push(
+          "le prénom doit contenir au minimum 3 lettres et que des lettres"
+        );
       }
       e.preventDefault();
     },
@@ -148,6 +155,7 @@ export default {
       document.getElementById("bulle").style.visibility = "visible";
       document.getElementById("information").innerHTML = "Employé Ajouté";
       document.querySelector("button").disabled = true;
+      this.data = [];
       setTimeout(function () {
         document.getElementById("information").innerHTML = "";
         document.getElementById("bulle").className = "";
