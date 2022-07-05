@@ -105,7 +105,7 @@ export default {
       posts: {
         name: null,
         city: null,
-        nbCouverts: "",
+        nbCouverts: "1",
         terrasse: "non",
         parking: "non",
       },
@@ -195,7 +195,9 @@ export default {
         setTimeout(function () {
           document.getElementById("information").innerHTML = "";
           document.getElementById("bulle").className = "";
-          document.querySelector("button").disabled = false;
+          document.forms["name"].reset;
+          document.forms["city"].reset;
+          // document.querySelector("button").disabled = false;
         }, 3000);
       } else {
         document.getElementById("bulle").className = "alert alert-warning";
