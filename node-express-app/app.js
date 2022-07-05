@@ -11,6 +11,18 @@ var connection = mysql.createConnection({
     user: "root",
     password: ""
 });
+function remplaceDateToBd(mydate) {
+    if (mydate == null) {
+        var today = new Date();
+        var year = today.getFullYear();
+        var mouth = today.getMonth()+1;
+        var day = today.getDate();
+        mydate = year + "/" + mouth + "/" + day;
+        console.log("TRAITEMENT => DATE NULL,DATE PAR DEFAULT");
+    }
+    return mydate;
+}
+//function detection d'une apostrophe dans l'element
 function remplaceToBd(element) {
     if (element.match("'")){
         console.log("TRAITEMENT => APOSTROPHE DETECTEE")
@@ -120,9 +132,12 @@ app.post('/restaurant', (req, res) => {
 
 app.post('/employe', (req, res) => {
     // requete
-    // traitement de l'insertion d'une apostrophe pour les chaines de caracteres
+    // Traitements de l'insertion d'une apostrophe pour les chaines de caracteres
     req.body.first_name = remplaceToBd(req.body.first_name);
     req.body.last_name = remplaceToBd(req.body.last_name);
+    // Traitement des dates
+    //console.log(req.body.hire_date);
+    req.body.hire_date = remplaceDateToBd(req.body.hire_date);
     let sql_insert= "INSERT INTO ?? (first_name,last_name,hire_date,restaurant_id)" +
        " VALUES('"  + req.body.first_name+ "','"
                     + req.body.last_name + "', '"
