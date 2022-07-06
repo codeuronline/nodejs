@@ -6,7 +6,7 @@
         <span id="information"></span>
       </div>
       <div class="container">
-        <h1>Formulaire : Ajout d'un Employé</h1>
+        <h1>Ajout d'un Employé</h1>
         <form @submit="postData" method="post">
           <fieldset>
             <legend>Identité</legend>
