@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="cadre">
     <span id="information"></span>
-    <table class="table table-bordered" width="1600px">
+    <table class="table table-bordered">
       <thead>
         <tr class="table table-dark">
           <th scope="col">Nom</th>
@@ -107,13 +107,13 @@ export default {
     };
   },
   methods: {
-    update() {
-      axios
+    async update() {
+      await axios
         .get("http://127.0.0.1:5000/restaurants")
         .then((res) => (this.restaurants = res.data));
       // .catch(error =>this.resto =[{"name":"Erreur de chargement"}])
       console.log(this.restaurants);
-      axios
+      await axios
         .get("http://127.0.0.1:5000/employes")
         .then((res) => (this.team = res.data));
       // .catch(error =>this.team =[{"first_name":"Erreur de chargement"}])
@@ -138,7 +138,7 @@ export default {
       this.update();
     },
   },
-  mounted() {
+  async mounted() {
     this.update();
   },
 };
@@ -156,7 +156,7 @@ i :hover {
   height: 30px;
 }
 .cadre {
-  margin: 0 400px;
+  margin: 0 100px;
 }
 h3 {
   margin: 40px 0 0;

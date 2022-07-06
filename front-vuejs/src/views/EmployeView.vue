@@ -183,11 +183,10 @@ input::placeholder {
 }
 .cadre {
   color: black;
-  margin: 0px 500px;
-  padding: 50px;
-  width: "400px";
+  margin: 0px 300px;
+  padding: 5px;
   background-color: chocolate;
-  border: 2px solid bisque;
+  border: 3px solid bisque;
   border-radius: 10px;
 }
 </style>
