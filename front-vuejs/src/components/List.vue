@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody v-for="(restaurant, index) in restaurants" v-bind:key="index">
-        <tr>
+        <tr class="color" :class="{ red: index % 2 }">
           <td>
             <div width="100%">
               <h2>{{ restaurant.name }}</h2>
@@ -51,7 +51,7 @@
             </button>
           </td>
         </tr>
-        <tr>
+        <tr class="lightgreen" :class="{ lightred: index % 2 }">
           <td scope="col" valign="middle">
             <div>
               <h3>EQUIPE</h3>
@@ -145,6 +145,19 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.color {
+  background-color: rgb(16, 92, 92);
+}
+.lightgreen {
+  background-color: rgb(211, 238, 238);
+}
+
+.red {
+  background-color: crimson;
+}
+.lightred {
+  background-color: rgb(229, 89, 117);
+}
 i :hover {
   cursor: pointer;
 }
