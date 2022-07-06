@@ -105,7 +105,7 @@ export default {
       posts: {
         name: null,
         city: null,
-        nbCouverts: "1",
+        nbCouverts: "",
         terrasse: "non",
         parking: "non",
       },
@@ -210,10 +210,9 @@ input::placeholder {
 }
 .cadre {
   color: black;
-  margin: 0px 500px;
-  padding: 20px;
-  width: "400px";
-  background-color: cornflowerblue;
+  margin: 0px 300px;
+  padding: 5px;
+  background-color: aquamarine;
   border: 3px solid bisque;
   border-radius: 10px;
 }

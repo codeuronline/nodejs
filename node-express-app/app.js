@@ -11,6 +11,7 @@ var connection = mysql.createConnection({
     user: "root",
     password: ""
 });
+
 function remplaceDateToBd(mydate) {
     if (mydate == null) {
         var today = new Date();
