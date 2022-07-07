@@ -1,4 +1,5 @@
-<?php 
+<?php
+ 
 $people = array(
 array("name"=>"Bob","age"=>8,"colour"=>"red"),
 array("name"=>"Greg","age"=>12,"colour"=>"blue"),
