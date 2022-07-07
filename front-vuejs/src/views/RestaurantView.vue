@@ -71,7 +71,6 @@
                 name="parking"
                 value="oui"
                 v-model="posts.parking"
-                checked
               />
               <label for="parking">&nbsp;&nbsp;oui&nbsp;&nbsp;</label>
               <input
@@ -106,8 +105,8 @@ export default {
         name: null,
         city: null,
         nbCouverts: "",
-        terrasse: "non",
-        parking: "non",
+        terrasse: "oui",
+        parking: "oui",
       },
     };
   },
@@ -143,7 +142,7 @@ export default {
         document.getElementById("button").disabled = false;
         document.getElementById("bulle").style.visibility = "visible";
         document.getElementById("information").innerHTML =
-          "Le Nom de restaurant doit contenir<br> que des caractères autorisés<br> ET au moins 2 caractères";
+          "Le Nom du restaurant doit contenir<br> minimum 2 caractères ET autorisés<br> ";
         this.okName = false;
       }
       e.preventDefault();
