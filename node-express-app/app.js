@@ -303,9 +303,7 @@ app.put('/restaurants/:idResto', (req, res) => {
         res.send(row);
     });
     res.status(200);
-
 })
-
 // Chemin d'acces : PUT /restaurants/: idResto /employes/:idEmploye
 // Modification d'un employe IdEmploye dans un restaurant idResto
 app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
@@ -326,16 +324,13 @@ app.put('/restaurants/:idResto/employes/:idEmploye', (req, res) => {
 });
     res.status(200);
 })
-
 /*************************************************************************
 *
 *                               Methode DELETE
 *
 **************************************************************************/
-
 // Chemin d'acces : DELETE /restaurants/ :id
 // Suppression d'un restaurant id et de tous ces employés rattachés
-
 app.delete('/restaurant/:id', (req, res) => {
     let id = parseInt(req.params.id);
     // Coder ici la requête
@@ -350,7 +345,6 @@ app.delete('/restaurant/:id', (req, res) => {
         console.log("DELETE => RESTAURANT "+id)
         //res.send(row);
     });
-    
     //suppression des employe(s) lié à ce Restaurant
     let sql_delete_employe= "DELETE FROM ?? WHERE ?? = " + id
     let replaces_employes = ['employes', 'restaurant_id'];
@@ -364,10 +358,7 @@ app.delete('/restaurant/:id', (req, res) => {
         res.send(row);
     });
     res.status(200);
-   
 })
-
-
 // Chemin d'acces : DELETE /restaurants/ :idResto /employes/: idEmploye
 // Suppression d'un restaurant id et de tous ces employés rattachés
 app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
@@ -385,7 +376,6 @@ app.delete('/restaurants/:idResto/employe/:idEmploye', (req, res) => {
         res.send(row);
     });
     res.status(200);
-
 })
 // Chemin d'acces : DELETE /employes/: id
 // Suppression d'un employé idEmploye connu
@@ -402,18 +392,4 @@ app.delete('/employes/:id', (req, res) => {
          res.send(row);
      });
     res.status(200);
-
 })
-//exports.app = app;
-//exports.postResto = postResto 
-
-
-
-
-//  app.listen(5050, () => {
-//console.log('Server is listening @5000');
-//});
-//  app.get('/hello', function (request, response) {
-//      app.postResto;
-//      monmodule.direBye();
-//  })
