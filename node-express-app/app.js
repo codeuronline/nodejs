@@ -134,7 +134,7 @@ app.post('/restaurant', (req, res) => {
 app.post('/employe', (req, res) => {
     // requete
     // Traitements de l'insertion d'une apostrophe pour les chaines de caracteres
-    req.body.first_name = remplaceToBd(req.body.first_name);
+    req.body.first_name = remplaceToBb(req.body.first_name);
     req.body.last_name = remplaceToBd(req.body.last_name);
     // Traitement des dates
     //console.log(req.body.hire_date);
